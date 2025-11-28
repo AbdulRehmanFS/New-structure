@@ -1,0 +1,88 @@
+.quill-editor-wrapper {
+  border: 1px solid rgba(255, 255, 255, 0.51);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.quill-editor-wrapper .quill {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.quill-editor-wrapper .ql-toolbar {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.51);
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  padding: 8px;
+  margin-bottom: 0px;
+}
+
+.quill-editor-wrapper .ql-toolbar .ql-stroke {
+  stroke: rgba(255, 255, 255, 0.79);
+}
+
+.quill-editor-wrapper .ql-toolbar .ql-fill {
+  fill: rgba(255, 255, 255, 0.79);
+}
+
+.quill-editor-wrapper .ql-toolbar .ql-picker-label {
+  color: rgba(255, 255, 255, 0.79);
+}
+
+.quill-editor-wrapper .ql-toolbar .ql-picker-options {
+  background-color: rgba(19, 19, 19, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.51);
+  color: rgba(255, 255, 255, 0.79);
+}
+
+.quill-editor-wrapper .ql-toolbar .ql-picker-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.79);
+}
+
+.quill-editor-wrapper .ql-toolbar button:hover,
+.quill-editor-wrapper .ql-toolbar button.ql-active {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.quill-editor-wrapper .ql-toolbar button:hover .ql-stroke,
+.quill-editor-wrapper .ql-toolbar button.ql-active .ql-stroke {
+  stroke: rgba(255, 255, 255, 1);
+}
+
+.quill-editor-wrapper .ql-toolbar button:hover .ql-fill,
+.quill-editor-wrapper .ql-toolbar button.ql-active .ql-fill {
+  fill: rgba(255, 255, 255, 1);
+}
+
+.quill-editor-wrapper .ql-container {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: rgba(255, 255, 255, 0.79);
+  font-size: 16px;
+  height: 300px;
+}
+
+.quill-editor-wrapper .ql-editor {
+  color: rgba(255, 255, 255, 0.79);
+  height: calc(100% - 15px);
+  padding: 5px 25px;
+}
+
+.quill-editor-wrapper .ql-editor.ql-blank::before {
+  color: rgba(255, 255, 255, 0.5);
+  font-style: normal;
+}
+
+.quill-editor-wrapper .ql-editor::-webkit-scrollbar {
+  width: 0px;
+}
+
+.error_text {
+  font-weight: 400;
+  font-size: 0.75rem;
+  color: #d32f2f;
+  padding: 5px 0 0 20px;
+}
+
