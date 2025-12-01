@@ -30,6 +30,7 @@ export default function UserManagement() {
             bg={userSelectedList === "viewer" ? theme.white : theme.buttonColor}
             showBorder={userSelectedList === "viewer"}
             onClick={() => handleSectionSelection("viewer")}
+            height="32px"
           />
           <ButtonComponent
             text="Content Creator"
@@ -38,6 +39,7 @@ export default function UserManagement() {
             size="middle"
             showBorder={userSelectedList === "creator"}
             onClick={() => handleSectionSelection("creator")}
+            height="32px"
           />
         </div>
         {userSelectedList === "viewer" ? (

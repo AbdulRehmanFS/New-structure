@@ -20,7 +20,86 @@ const CustomePagination = ({
   total,
   defaultPageSize,
 }) => (
-  <div className="flex justify-end mt-8 h-[37px] [&_.ant-pagination-next]:ml-2 [&_.ant-pagination-next]:justify-end [&_.ant-pagination]:flex [&_.ant-pagination]:items-center [&_.ant-pagination]:bg-pagination [&_.ant-pagination]:w-fit [&_.ant-pagination]:rounded [&_.ant-pagination]:py-1 [&_.ant-pagination]:px-3 [&_.ant-pagination-item]:h-[30px] [&_.ant-pagination-item]:min-w-[30px] [&_svg]:fill-white [&_.ant-pagination-next]:flex [&_.ant-pagination-next]:items-center [&_.ant-pagination-next]:h-[30px] [&_.ant-pagination-prev]:flex [&_.ant-pagination-prev]:items-center [&_.ant-pagination-prev]:h-[30px]">
+  <div className="custom-pagination-wrapper">
+    <style>{`
+      .custom-pagination-wrapper {
+        display: flex;
+        justify-content: end;
+        margin-top: 30px;
+        height: 37px;
+      }
+      .custom-pagination-wrapper .ant-pagination-next {
+        margin-inline-start: 8px;
+        justify-content: end;
+      }
+      .custom-pagination-wrapper .ant-pagination {
+        display: flex;
+        align-items: center;
+        background: ${theme.pagination};
+        width: fit-content;
+        border-radius: 5px;
+        padding: 4px 12px;
+      }
+      .custom-pagination-wrapper .ant-pagination-item {
+        height: 30px;
+        min-width: 30px;
+        background: transparent !important;
+        border-color: transparent !important;
+      }
+      .custom-pagination-wrapper .ant-pagination-item a {
+        background: transparent !important;
+        color: white;
+      }
+      .custom-pagination-wrapper .ant-pagination-item-active {
+        background: white !important;
+        border-color: white !important;
+        border-radius: 2px;
+      }
+      .custom-pagination-wrapper .ant-pagination-item-active::before {
+        display: none;
+      }
+      .custom-pagination-wrapper .ant-pagination-item-active a {
+        background: white !important;
+        color: ${theme.greyText} !important;
+        border-radius: 2px;
+      }
+      .custom-pagination-wrapper .ant-pagination-item-active:hover {
+        background: white !important;
+        border-color: white !important;
+      }
+      .custom-pagination-wrapper .ant-pagination-item-active:hover a {
+        background: white !important;
+        color: ${theme.greyText} !important;
+      }
+      .custom-pagination-wrapper .ant-pagination-item:hover:not(.ant-pagination-item-active) {
+        background: transparent !important;
+        border-color: transparent !important;
+      }
+      .custom-pagination-wrapper .ant-pagination-item:hover:not(.ant-pagination-item-active) a {
+        background: transparent !important;
+        color: white;
+      }
+      .custom-pagination-wrapper .ant-pagination-prev,
+      .custom-pagination-wrapper .ant-pagination-next {
+        background: transparent !important;
+        border-color: transparent !important;
+      }
+      .custom-pagination-wrapper .ant-pagination-prev button,
+      .custom-pagination-wrapper .ant-pagination-next button {
+        background: transparent !important;
+        border-color: transparent !important;
+        color: white;
+      }
+      .custom-pagination-wrapper svg {
+        fill: white;
+      }
+      .custom-pagination-wrapper .ant-pagination-next,
+      .custom-pagination-wrapper .ant-pagination-prev {
+        display: flex;
+        align-items: center;
+        height: 30px;
+      }
+    `}</style>
     <ConfigProvider
       theme={{
         components: {

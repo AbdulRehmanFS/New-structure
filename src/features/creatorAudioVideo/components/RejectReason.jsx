@@ -31,9 +31,9 @@ const RejectReason = ({
   };
 
   return (
-    <Modal open={isModalOpen} onCancel={handleclose} footer={false} width={520}>
-      <div className="w-full p-6">
-        <div className="text-lg font-semibold mb-4 text-center text-dark-grey-text">
+    <Modal open={isModalOpen} onCancel={handleclose} footer={false} width="auto" centered style={{ maxWidth: "90vw" }}>
+      <div className="w-full p-4 sm:p-6 max-w-[520px]">
+        <div className="text-base sm:text-lg font-semibold mb-4 text-center text-dark-grey-text">
           Please select from one of the reasons below.
         </div>
         <Checkbox.Group
@@ -63,19 +63,21 @@ const RejectReason = ({
             className="mb-4"
           />
 
-          <div className="flex gap-3 justify-end mt-6">
+          <div className="flex flex-col sm:flex-row gap-3 justify-end mt-6">
             <ButtonComponent
               text="Cancel"
               bg={theme.black || "#000"}
               onClick={handleclose}
-              width="100px"
+              width="100%"
+              className="sm:w-[100px]"
             />
             <ButtonComponent
               text={text}
               onClick={handleReject}
               bg={theme.primaryColor}
               loading={loading}
-              width="140px"
+              width="100%"
+              className="sm:w-[140px]"
             />
           </div>
         </Checkbox.Group>

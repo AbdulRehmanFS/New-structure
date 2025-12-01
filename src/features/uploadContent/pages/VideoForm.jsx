@@ -7,7 +7,7 @@ import SRTFileUpload from "@components/SRTFileUpload";
 import InputComponent from "@components/Input";
 import SelectComponent from "@components/Select";
 import ButtonComponent from "@components/Button";
-import BackButton from "@features/common/components/BackButton";
+import BackButton from "@utils/commonSection";
 import { videoFieldList } from "../utils/data";
 import { theme } from "@utils/theme";
 import { languageOptions } from "@utils/constant";
@@ -72,125 +72,120 @@ function UploadVideo() {
   }, [creatorID, userList, creatorList]);
 
   return (
-    <div className="scroll-without-header px-5 py-4">
-      <Form
-        name="basic"
-        onFinish={onFinish}
-        ref={formRef}
-        initialValues={{
-          upload: uploadContent?.content_url,
-          uploadTrailer: uploadContent?.trailer,
-          ...uploadContent
-        }}
-      >
-        <div className="flex items-center gap-2 mb-6">
-          <BackButton />
-          <div className="text-lg font-semibold text-white">Upload Content</div>
-        </div>
+    <Form
+      name="basic"
+      onFinish={onFinish}
+      ref={formRef}
+      initialValues={{
+        upload: uploadContent?.content_url,
+        uploadTrailer: uploadContent?.trailer,
+        ...uploadContent
+      }}
+      className="[&_.title-textarea_textarea.ant-input]:h-[43px] [&_.title-textarea_textarea.ant-input]:!text-[15px] [&_.description-textarea_textarea.ant-input]:!text-[15px] [&_.upload-image-label]:!text-[15px] [&_.cover-art-label]:!text-[15px] [&_.ant-select-selector]:!text-[15px]">
+      <div className="flex text-lg font-semibold mb-[25px] gap-[5px] text-white">
+        <BackButton />
+        <div>Upload Content</div>
+      </div>
 
-        <Row gutter={20}>
-          {videoFieldList.map((list) => (
-            <Col xs={list.xs} md={list.md} key={list?.name}>
-              {!(formatType === "audio" && list.placeholder === "Upload Trailer") && (
-                <>
-                  {list.component === "subtitle-select" && list.name === "subtitles" ? (
-                    <div style={{ marginBottom: "18px" }}>
-                      {fields.map((field, index) => (
-                        <div className="w-full py-2.5" key={index}>
-                          <SelectComponent
-                            style={{ width: "100%" }}
-                            placeholder="Add Subtitle(optional)"
-                            options={languageOptions}
-                            value={field.language}
-                            onChange={(value) => handleLanguageChange(index, value)}
-                            bg={theme.formField || "#2a2a2a"}
-                            textColor="white"
-                            optionsBg={theme.screenBackground}
-                            border="transparent"
-                          />
-                          <SRTFileUpload
-                            bg={theme.formField || "#2a2a2a"}
-                            onChange={(file) => {
-                              handleFileChange(index, file);
-                            }}
-                            placeholder="Upload subtitle file"
-                            name={`fileName_${index}`}
-                            value={fields[index].file}
-                          />
-                        </div>
-                      ))}
-                      <div
-                        className="flex justify-end w-full cursor-pointer text-[15px]"
-                        style={{ color: theme.primaryColor }}
-                        onClick={handleAddMore}
-                      >
-                        + Add More
-                      </div>
-                    </div>
-                  ) : (
-                    <Form.Item name={list.name} style={{ marginBottom: "18px" }} rules={list?.rule ?? []}>
-                      {list.component === "upload-content" && (
-                        <ContentUpload
-                          placeholder={list?.placeholder}
-                          bg={theme.formField || "#2a2a2a"}
-                          size={list?.size}
-                          name={list?.name}
-                        />
-                      )}
-                      {list.component === "upload-cover" && (
-                        <FileUpload
-                          placeholder={list?.placeholder}
-                          name={list?.name}
-                          aspectRatio={list?.aspectRatio}
-                          bg={theme.formField || "#2a2a2a"}
-                        />
-                      )}
-                      {list.component === "textarea" && (
-                        <InputComponent
-                          type={list?.type}
-                          placeholder={list?.placeholder}
-                          maxLength={list.maxLength}
-                          className={list.className}
-                          bg="#2a2a2a"
-                          border="transparent"
-                        />
-                      )}
-                      {list.component === "select" && (
+      <Row gutter={20}>
+        {videoFieldList.map((list) => (
+          <Col xs={list.xs} md={list.md} key={list?.name}>
+            {!(formatType === "audio" && list.placeholder === "Upload Trailer") && (
+              <Form.Item name={list.name} style={{ marginBottom: "18px" }} rules={list?.rule ?? []}>
+                {list.component === "upload-content" && (
+                  <ContentUpload
+                    placeholder={list?.placeholder}
+                    bg={theme.formField}
+                    size={list?.size}
+                    name={list?.name}
+                  />
+                )}
+                {list.component === "upload-cover" && (
+                  <FileUpload
+                    placeholder={list?.placeholder}
+                    name={list?.name}
+                    aspectRatio={list?.aspectRatio}
+                    bg={theme.formField}
+                  />
+                )}
+                {list.component === "textarea" && (
+                  <InputComponent
+                    type={list?.type}
+                    placeholder={list?.placeholder}
+                    maxLength={list.maxLength}
+                    className={list.className}
+                    bg="#2a2a2a"
+                    border="transparent"
+                  />
+                )}
+                {list.component === "subtitle-select" && list.name === "subtitles" && (
+                  <>
+                    {fields.map((field, index) => (
+                      <div style={{ width: "100%" }} className="py-2.5" key={index}>
                         <SelectComponent
-                          onChange={(e) => onChange(e, list?.name)}
-                          placeholder={list?.placeholder}
-                          multiple={list?.name === "cast"}
-                          options={optionsList[list?.name] ?? list?.options}
-                          filterOption={filterOption}
-                          showSearch={list?.name === "creator"}
-                          loading={list?.name === "creator" ? searchLoading : false}
-                          style={{ height: "45px" }}
-                          bg={theme.formField || "#2a2a2a"}
+                          style={{ width: "100%" }}
+                          placeholder="Add Subtitle(optional)"
+                          options={languageOptions}
+                          value={field.language}
+                          onChange={(value) => handleLanguageChange(index, value)}
+                          bg={theme.formField}
                           textColor="white"
                           optionsBg={theme.screenBackground}
                           border="transparent"
-                          handleSearch={list?.name === "creator" && handleGetCreator ? handleGetCreator : null}
                         />
-                      )}
-                    </Form.Item>
-                  )}
-                </>
-              )}
-            </Col>
-          ))}
-        </Row>
-        <div className="flex justify-end items-center mt-8">
-          <ButtonComponent
-            type="primary"
-            htmlType="submit"
-            width="120px"
-            text="Next"
-            bg={theme.primaryColor}
-            loading={uploadLoader}
-          />
-        </div>
-      </Form>
-    </div>
+                        <SRTFileUpload
+                          bg={theme.formField}
+                          onChange={(file) => {
+                            handleFileChange(index, file);
+                          }}
+                          placeholder="Upload subtitle file"
+                          name={`fileName_${index}`}
+                          index={index}
+                          value={fields[index].file}
+                        />
+                      </div>
+                    ))}
+                    <div
+                      className="flex justify-end w-full cursor-pointer"
+                      style={{ color: theme.primaryColor }}
+                      onClick={() => handleAddMore()}>
+                      + Add More
+                    </div>
+                  </>
+                )}
+                {list.component === "select" && (
+                  <SelectComponent
+                    onChange={(e) => onChange(e, list?.name)}
+                    placeholder={list?.placeholder}
+                    multiple={list?.name === "cast"}
+                    options={optionsList[list?.name] ?? list?.options}
+                    filterOption={filterOption}
+                    showSearch={list?.name === "creator"}
+                    loading={list?.name === "creator" ? searchLoading : false}
+                    style={{ height: "45px" }}
+                    bg={theme.formField}
+                    textColor="white"
+                    optionsBg={theme.screenBackground}
+                    border="transparent"
+                    handleSearch={list?.name === "creator" && handleGetCreator ? handleGetCreator : null}
+                  />
+                )}
+              </Form.Item>
+            )}
+          </Col>
+        ))}
+      </Row>
+      <div className="flex justify-end items-center mt-[30px]">
+        <ButtonComponent
+          type="primary"
+          htmlType="submit"
+          width="120px"
+          text="Next"
+          bg={theme.primaryColor}
+          loading={uploadLoader}
+        />
+      </div>
+    </Form>
   );
 }
 

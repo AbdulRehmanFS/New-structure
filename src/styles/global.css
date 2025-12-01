@@ -37,6 +37,32 @@ body {
   color: rgba(116, 116, 116, 1) !important;
 }
 
+/* Table data styling - gray color like old web */
+.ant-table-tbody > tr > td {
+  color: #949494 !important;
+}
+
+.ant-table-tbody > tr > td > * {
+  color: #949494 !important;
+}
+
+.ant-table-tbody > tr:hover > td {
+  color: #949494 !important;
+}
+
+.ant-table-tbody > tr:hover > td > * {
+  color: #949494 !important;
+}
+
+/* View all link styling - ensure red color, not blue */
+.view-all-link {
+  color: rgba(216, 12, 12, 1) !important;
+}
+
+.view-all-link:hover {
+  color: rgba(216, 12, 12, 1) !important;
+}
+
 /* Notifications page styles */
 .heading p {
   color: white;
@@ -56,6 +82,26 @@ body {
 }
 
 /* Create Push Notification page styles */
+.notification-type-radio-group .ant-radio-wrapper {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.notification-type-radio-group .ant-radio-wrapper::after {
+  content: none;
+}
+
+.notification-type-radio-group .ant-radio-wrapper .ant-radio {
+  margin-right: 0;
+}
+
+.notification-type-radio-group .ant-radio-wrapper span:last-child {
+  text-align: left;
+  flex: 1;
+}
+
 .push-notification-textarea::placeholder {
   color: rgba(196, 196, 196, 0.45);
 }
@@ -67,6 +113,26 @@ body {
 }
 
 .push-notification-form .custom-button {
+  margin-top: 2%;
+}
+
+.email-notification-form .email-notification-textarea::placeholder,
+.email-notification-form .input-field::placeholder {
+  color: rgba(196, 196, 196, 0.45);
+}
+
+.email-notification-form .input-field {
+  background: white;
+  color: rgba(116, 116, 116, 1);
+}
+
+.email-notification-form .label {
+  color: rgba(255, 255, 255, 0.79);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.email-notification-form .custom-button {
   margin-top: 2%;
 }
 
@@ -100,15 +166,30 @@ code {
   padding: 0 !important;
   margin: 0 auto;
   border: none !important;
+  position: relative !important;
 }
 
 .modal-dialog .ant-modal-body {
   padding: 0 !important;
   overflow: visible;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
 }
 
 .modal-dialog .ant-modal-wrap {
   background: rgba(0, 0, 0, 0.45) !important;
+}
+
+.modal-dialog .ant-modal-mask {
+  background: rgba(0, 0, 0, 0.45) !important;
+}
+
+.modal-dialog .ant-modal {
+  background: transparent !important;
+  box-shadow: none !important;
 }
 
 /* Custom scrollbar */
@@ -194,14 +275,29 @@ code {
   background: rgba(196, 196, 196, 0.15) !important;
 }
 
-/* Modal close button placement */
+/* Modal close button placement - inside modal content */
 .modal-dialog .ant-modal-close {
-  top: 16px;
-  right: 20px;
-  z-index: 10;
-  width: 20px;
-  height: 20px;
-  line-height: 20px;
+  top: 16px !important;
+  right: 20px !important;
+  z-index: 1000 !important;
+  width: 20px !important;
+  height: 20px !important;
+  line-height: 20px !important;
+  position: absolute !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.modal-dialog .ant-modal-content {
+  position: relative !important;
+}
+
+.modal-dialog .ant-modal-close svg {
+  width: 20px !important;
+  height: 20px !important;
+  display: block !important;
+  visibility: visible !important;
 }
 
 .modal-dialog .ant-modal-close svg {
@@ -227,3 +323,108 @@ code {
 }
 
 /* Fallback: If modal body contains white background element, make cross black */
+
+/* DatePicker global styles - Dark theme with white text */
+.ant-picker-dropdown {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.ant-picker-panel {
+  background: rgba(19, 19, 19, 1) !important;
+  border: 1px solid rgba(163, 163, 163, 0.3) !important;
+  border-radius: 8px !important;
+}
+
+.ant-picker-panel-container {
+  background: transparent !important;
+}
+
+.ant-picker-header {
+  color: rgba(255, 255, 255, 0.79) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.ant-picker-header-view button {
+  color: rgba(255, 255, 255, 0.79) !important;
+}
+
+.ant-picker-header-view button:hover {
+  color: rgba(255, 255, 255, 1) !important;
+}
+
+.ant-picker-content th {
+  color: rgba(255, 255, 255, 0.79) !important;
+}
+
+.ant-picker-cell {
+  color: rgba(255, 255, 255, 0.79) !important;
+}
+
+.ant-picker-cell-in-view {
+  color: rgba(255, 255, 255, 0.79) !important;
+}
+
+.ant-picker-cell:hover:not(.ant-picker-cell-disabled):not(.ant-picker-cell-selected) .ant-picker-cell-inner {
+  background: rgba(196, 196, 196, 0.2) !important;
+  color: rgba(255, 255, 255, 1) !important;
+}
+
+.ant-picker-cell-selected .ant-picker-cell-inner {
+  background: rgba(164, 22, 20, 1) !important;
+  color: rgba(255, 255, 255, 1) !important;
+}
+
+.ant-picker-cell-disabled {
+  color: rgba(255, 255, 255, 0.3) !important;
+}
+
+.ant-picker-cell-disabled .ant-picker-cell-inner {
+  color: rgba(255, 255, 255, 0.3) !important;
+}
+
+.ant-picker-footer {
+  background: transparent !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.ant-picker-today-btn {
+  color: rgba(164, 22, 20, 1) !important;
+  background: transparent !important;
+}
+
+.ant-picker-today-btn:hover {
+  color: rgba(216, 12, 12, 1) !important;
+  background: transparent !important;
+}
+
+.ant-picker-month-btn,
+.ant-picker-year-btn {
+  color: rgba(255, 255, 255, 0.79) !important;
+}
+
+.ant-picker-month-btn:hover,
+.ant-picker-year-btn:hover {
+  color: rgba(255, 255, 255, 1) !important;
+}
+
+.ant-picker-prev-icon,
+.ant-picker-next-icon,
+.ant-picker-super-prev-icon,
+.ant-picker-super-next-icon {
+  color: rgba(255, 255, 255, 0.79) !important;
+}
+
+.ant-picker-prev-icon:hover,
+.ant-picker-next-icon:hover,
+.ant-picker-super-prev-icon:hover,
+.ant-picker-super-next-icon:hover {
+  color: rgba(255, 255, 255, 1) !important;
+}
+
+.ant-picker-cell-in-view.ant-picker-cell-range-start .ant-picker-cell-inner,
+.ant-picker-cell-in-view.ant-picker-cell-range-end .ant-picker-cell-inner {
+  background: rgba(164, 22, 20, 1) !important;
+  color: rgba(255, 255, 255, 1) !important;
+}

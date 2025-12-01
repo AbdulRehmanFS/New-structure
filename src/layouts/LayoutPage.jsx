@@ -16,10 +16,12 @@ export default function LayoutPage() {
         <Sidebar isCollapsed={isSidebarCollapsed} onToggle={toggleSidebar} />
       </Col>
       <Col 
-        className="p-5 overflow-auto h-screen bg-screen-bg" 
+        className="p-5 overflow-auto h-screen bg-screen-bg [&::-webkit-scrollbar]:w-0" 
         style={{ 
           width: isSidebarCollapsed ? "calc(100% - 70px)" : "calc(100% - 240px)",
-          transition: "width 0.3s ease"
+          transition: "width 0.3s ease",
+          scrollbarWidth: 'none',
+          msOverflowStyle: 'none'
         }}
       >
         <Outlet />

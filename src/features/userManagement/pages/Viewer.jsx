@@ -26,8 +26,8 @@ function UserViewer({ searchContent }) {
 
   return (
     <div className="flex flex-col mt-5 [&_.table-wrapper]:mt-8 [&_.action]:border-b [&_.action]:border-[rgba(163,163,163,0.45)]">
-      <div className="flex flex-wrap justify-between items-center gap-3 rounded-xl bg-[rgba(10,10,10,0.85)] px-5 py-4 mb-5">
-        <div className="text-2xl font-semibold text-white">Viewer Listing</div>
+      <div className="flex flex-wrap justify-between items-center  rounded-xl">
+        <div className="text-lg text-white">Viewer Listing</div>
         <div className="flex items-center gap-2.5">
           <ButtonComponent
             text="Age Verification"
@@ -42,6 +42,7 @@ function UserViewer({ searchContent }) {
             onChange={handleStatusSelection}
             options={filterOption}
             bg="transparent"
+            height="32px"
           />
         </div>
       </div>

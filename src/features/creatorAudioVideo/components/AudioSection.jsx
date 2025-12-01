@@ -27,15 +27,16 @@ const AudioSection = ({ searchText = "" }) => {
 
   return (
     <div className="mt-5">
-      <div className="flex flex-wrap justify-between items-center gap-3 rounded-xl bg-[rgba(10,10,10,0.85)] px-5 py-4 mb-5">
-        <div className="text-2xl font-semibold text-white">Audio Listing</div>
-        <div className="flex items-center gap-2.5">
+      <div className="flex flex-wrap justify-between items-center  rounded-xl">
+        <div className="text-lg text-white mb-2">Audio Listing</div>
+        <div className="flex items-center gap-2.5 mb-5">
           <ButtonComponent
             text="Archive"
             width="110px"
             size="middle"
             bg={theme.buttonColor}
             onClick={() => navigateAudioRequest(1)}
+            height="32px"
           />
           <ButtonComponent
             text="Requests"
@@ -43,6 +44,7 @@ const AudioSection = ({ searchText = "" }) => {
             bg={theme.buttonColor}
             size="middle"
             onClick={() => navigateAudioRequest(2)}
+            height="32px"
           />
         </div>
       </div>

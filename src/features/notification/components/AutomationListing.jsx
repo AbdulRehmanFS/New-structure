@@ -2,6 +2,7 @@ import { useState } from "react";
 import TableComponent from "@components/Table";
 import SearchField from "@components/SearchField";
 import ButtonComponent from "@components/Button";
+import { theme } from "@utils/theme";
 
 const AutomationListing = () => {
   const [listing, setListing] = useState([]);
@@ -53,7 +54,7 @@ const AutomationListing = () => {
         />
         <ButtonComponent
           text="Create Auto Notification"
-          bg="primary"
+          bg={theme.primaryColor}
           width="200px"
           height="40px"
         />

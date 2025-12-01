@@ -54,6 +54,7 @@ export default function CreatorAudioVideo() {
               bg={audioVideoTab === "audio" ? theme.white : theme.buttonColor}
               showBorder={audioVideoTab === "audio"}
               onClick={() => handleSectionSelection("audio")}
+              height="32px"
             />
             <ButtonComponent
               text="Video"
@@ -62,6 +63,7 @@ export default function CreatorAudioVideo() {
               size="middle"
               showBorder={audioVideoTab === "video"}
               onClick={() => handleSectionSelection("video")}
+              height="32px"
             />
             <ButtonComponent
               text="Series"
@@ -70,6 +72,7 @@ export default function CreatorAudioVideo() {
               size="middle"
               showBorder={audioVideoTab === "series"}
               onClick={() => handleSectionSelection("series")}
+              height="32px"
             />
             <ButtonComponent
               text="Klipz"
@@ -78,6 +81,7 @@ export default function CreatorAudioVideo() {
               size="middle"
               showBorder={audioVideoTab === "klipz"}
               onClick={() => handleSectionSelection("klipz")}
+              height="32px"
             />
           </div>
           <DropDownComponent

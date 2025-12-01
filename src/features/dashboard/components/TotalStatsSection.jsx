@@ -3,7 +3,7 @@ import { useDashUserCount } from "../hooks";
 import { DottedLine } from "../utils/style.jsx";
 
 const InfoCardWrapper = ({ children }) => (
-  <div className="flex items-end gap-3 flex-wrap border-b border-white py-5 [&_.dotted-line:last-child]:hidden">
+  <div className="flex items-end gap-3 flex-wrap border-b border-white py-5 [&_.dotted-line:nth-last-child(1)]:hidden">
     {children}
   </div>
 );
@@ -11,11 +11,11 @@ const InfoCardWrapper = ({ children }) => (
 const TotalStatsSection = ({ filterBtn }) => {
   const [userList, userCountLoader] = useDashUserCount(filterBtn);
   return (
-    <div className="mr-2.5">
-      <InfoCardWrapper>
+    <InfoCardWrapper style={{ marginRight: "10px" }}>
         {userList.map((list, index) => (
-          <div key={list?.heading} className="flex items-end gap-3">
+        <>
             <InfoCard
+            key={list?.heading}
               count={list.count}
               heading={list.heading}
               icon={list.icon}
@@ -23,10 +23,9 @@ const TotalStatsSection = ({ filterBtn }) => {
               loader={userCountLoader}
             />
             {index !== userList.length - 1 && <DottedLine />}
-          </div>
+        </>
         ))}
       </InfoCardWrapper>
-    </div>
   );
 };
 

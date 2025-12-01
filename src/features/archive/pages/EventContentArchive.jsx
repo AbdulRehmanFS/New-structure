@@ -25,11 +25,14 @@ function Eventcontentarchive() {
     <>
       <Header handleSearchData={handleSearchData} heading="Live Events and Contents" />
       <div className="scroll-without-header">
-        <div className="flex items-center gap-2.5 mb-5 mt-5">
-          <BackButton />
-          <div className="text-2xl font-semibold text-white">
+        <div className="flex flex-wrap justify-between items-center gap-3 rounded-xl mb-5 mt-5">
+          <div className="flex items-center gap-2">
+            <BackButton />
+            <div className="text-lg text-white">
             {type === "Events" ? "Archive Events" : "Archive Contents"}
+            </div>
           </div>
+        </div>
         </div>
         <TableComponent columns={columns} data={archiveData} loading={loading} rowKey="_id" />
         <CustomePagination
@@ -51,7 +54,6 @@ function Eventcontentarchive() {
             />
           </ModalComponent>
         )}
-      </div>
     </>
   );
 }

@@ -146,7 +146,7 @@ const useContentlisting = () => {
       render: (_, record) => (
         <span
           onClick={() => navigateDetailSection(record)}
-          className="text-white cursor-pointer hover:underline truncate block max-w-[160px]"
+          className="cursor-pointer hover:underline truncate block max-w-[160px]"
         >
           {record?.title}
         </span>
@@ -162,7 +162,8 @@ const useContentlisting = () => {
         <Link
           to="/events-contents/contents-detail"
           state={{ podcastId: record?._id, showGraph: true }}
-          className="text-white hover:underline"
+          className="hover:underline"
+          style={{ color: theme.fieldBg }}
         >
           {record?.user_account?.user_name}
         </Link>
@@ -174,7 +175,7 @@ const useContentlisting = () => {
       key: "content_type ",
       align: "center",
       width: 120,
-      render: (_, record) => <div className="text-white">{record?.content_type ?? "---"}</div>
+      render: (_, record) => <div>{record?.content_type ?? "---"}</div>
     },
     {
       title: "Content Date",
@@ -198,7 +199,7 @@ const useContentlisting = () => {
       key: "contentCount",
       width: 80,
       render: (_, record) => (
-        <div className="text-white text-center">{record?.contentCount ?? "---"}</div>
+        <div style={{ textAlign: "center" }}>{record?.contentCount ?? "---"}</div>
       )
     },
     {
@@ -207,7 +208,7 @@ const useContentlisting = () => {
       key: "status",
       width: 90,
       render: (_, record) => (
-        <div className="text-white">
+        <div>
           {record?.status == "cancelled"
             ? "Cancelled"
             : record?.status == "accepted" && !record?.is_reoccur
@@ -230,7 +231,7 @@ const useContentlisting = () => {
               e.stopPropagation();
               navigateDetailSection(record);
             }}
-            className="text-white cursor-pointer hover:underline px-2"
+            className="cursor-pointer hover:underline px-2"
             role="button"
             tabIndex={0}
             onKeyDown={(e) => {
@@ -244,7 +245,7 @@ const useContentlisting = () => {
           </div>
           <div className="h-4 w-px bg-[rgba(255,255,255,0.1)]" />
           <div
-            className="text-white cursor-pointer hover:underline px-2"
+            className="cursor-pointer hover:underline px-2"
             onClick={(e) => {
               e.stopPropagation();
               handleParticularModal("delete", record);
@@ -262,7 +263,7 @@ const useContentlisting = () => {
           </div>
           <div className="h-4 w-px bg-[rgba(255,255,255,0.1)]" />
           <div
-            className="text-white cursor-pointer hover:underline px-2"
+            className="cursor-pointer hover:underline px-2"
             onClick={(e) => {
               e.stopPropagation();
               handleParticularModal("archive", record);

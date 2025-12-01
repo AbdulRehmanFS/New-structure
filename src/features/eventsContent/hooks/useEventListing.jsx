@@ -143,7 +143,7 @@ const useEventListing = () => {
       render: (_, record) => (
         <span
           onClick={() => navigateDetailSection(record)}
-          className="text-white cursor-pointer hover:underline truncate block max-w-[140px]"
+          className="cursor-pointer hover:underline truncate block max-w-[140px]"
         >
           {record?.title}
         </span>
@@ -159,7 +159,8 @@ const useEventListing = () => {
         <Link
           to="/events-contents/events-detail"
           state={{ eventId: record?._id, showExtraInfo: true }}
-          className="text-white hover:underline"
+          className="hover:underline"
+          style={{ color: theme.fieldBg }}
         >
           {record?.user_account?.user_name}
         </Link>
@@ -190,7 +191,7 @@ const useEventListing = () => {
       align: "center",
       width: 140,
       render: (_, record) => (
-        <span className="text-white truncate block max-w-[140px]">{record?.venue}</span>
+        <span className="truncate block max-w-[140px]">{record?.venue}</span>
       )
     },
     {
@@ -207,7 +208,7 @@ const useEventListing = () => {
       key: "status",
       width: 90,
       render: (_, record) => (
-        <div className="text-white">
+        <div>
           {record?.status == "cancelled"
             ? "Cancelled"
             : record?.status == "accepted"
@@ -230,7 +231,7 @@ const useEventListing = () => {
               e.stopPropagation();
               navigateDetailSection(record);
             }}
-            className="text-white cursor-pointer hover:underline px-2"
+            className="cursor-pointer hover:underline px-2"
             role="button"
             tabIndex={0}
             onKeyDown={(e) => {
@@ -244,7 +245,7 @@ const useEventListing = () => {
           </div>
           <div className="h-4 w-px bg-[rgba(255,255,255,0.1)]" />
           <div
-            className="text-white cursor-pointer hover:underline px-2"
+            className="cursor-pointer hover:underline px-2"
             onClick={(e) => {
               e.stopPropagation();
               handleParticularModal("delete", record);
@@ -262,7 +263,7 @@ const useEventListing = () => {
           </div>
           <div className="h-4 w-px bg-[rgba(255,255,255,0.1)]" />
           <div
-            className="text-white cursor-pointer hover:underline px-2"
+            className="cursor-pointer hover:underline px-2"
             onClick={(e) => {
               e.stopPropagation();
               handleParticularModal("archive", record);

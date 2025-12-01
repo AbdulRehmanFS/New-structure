@@ -4,6 +4,7 @@ import ButtonComponent from "@components/Button";
 import SelectComponent from "@components/Select";
 import { notificationRole } from "@utils/constant";
 import InputComponent from "@components/Input";
+import { theme } from "@utils/theme";
 import useSendNotification from "../hooks/useSendNotification";
 
 const EmailNotificationForm = ({ type }) => {
@@ -12,6 +13,7 @@ const EmailNotificationForm = ({ type }) => {
   return (
     <Form
       name="basic"
+      className="email-notification-form"
       style={{ width: "100%" }}
       initialValues={{}}
       layout="vertical"
@@ -20,7 +22,7 @@ const EmailNotificationForm = ({ type }) => {
       form={form}
     >
       <Form.Item
-        label={<label className="text-light-white text-sm font-medium">Select User Type</label>}
+        label={<label className="label">Select User Type</label>}
         name="user_role"
         rules={[
           {
@@ -34,7 +36,7 @@ const EmailNotificationForm = ({ type }) => {
       </Form.Item>
       <Form.Item
         name="subject"
-        label={<label className="text-light-white text-sm font-medium">Email Subject</label>}
+        label={<label className="label">Email Subject</label>}
         rules={[
           {
             required: true,
@@ -44,7 +46,7 @@ const EmailNotificationForm = ({ type }) => {
         style={{ marginBottom: "10px" }}
       >
         <InputComponent
-          className="placeholder:text-mid-grey bg-white text-grey-text"
+          className="input-field"
           placeholder="Email Title"
           bg="rgba(196, 196, 196, 0)"
           border="rgba(196, 196, 196, 0.45)"
@@ -52,7 +54,7 @@ const EmailNotificationForm = ({ type }) => {
       </Form.Item>
       <Form.Item
         name="content"
-        label={<label className="text-light-white text-sm font-medium">Email Body</label>}
+        label={<label className="label">Email Body</label>}
         rules={[
           {
             required: true,
@@ -61,7 +63,7 @@ const EmailNotificationForm = ({ type }) => {
         ]}
       >
         <InputComponent
-          className="placeholder:text-mid-grey"
+          className="email-notification-textarea"
           rowColumn={5}
           placeholder="Message Body"
           bg="rgba(196, 196, 196, 0)"
@@ -74,8 +76,9 @@ const EmailNotificationForm = ({ type }) => {
         type="primary"
         htmlType="submit"
         text="Send Push Notification"
-        bg="primary-light"
+        bg={theme.lightPrimaryColor}
         loading={loader}
+        h
       />
     </Form>
   );

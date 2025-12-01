@@ -13,8 +13,8 @@ const RightSection = ({ filterBtn }) => {
     useDashCreatorList(filterBtn);
 
   return (
-    <Col xs={7} className="h-[calc(100vh-133px)] overflow-auto flex flex-col p-3 gap-2.5 [&::-webkit-scrollbar]:w-0">
-      <div className="text-base mb-2.5 font-light text-white">Top 10 Creators</div>
+    <Col xs={7} className="right-section-list h-[calc(100vh-133px)] overflow-auto flex flex-col p-3 gap-2.5 [&_.list-heading]:text-base [&_.list-heading]:mb-2.5 [&_.list-heading]:font-light [&_.separator]:border-b-[8px] [&_.separator]:border-white [&_.separator]:rounded-[30000px] [&_.separator]:overflow-hidden [&_.separator]:w-full" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+      <div className="list-heading">Top 10 Creators</div>
       {topCreatorLoader ? (
         <CreatorLoader count={[1, 2, 3, 4]} />
       ) : (
@@ -27,9 +27,9 @@ const RightSection = ({ filterBtn }) => {
         </div>
       )}
 
-      <hr className="border-b-2 border-white rounded-full overflow-hidden w-full" />
+      <hr className="separator" />
 
-      <div className="text-base mb-2.5 font-light text-white">Bottom 10 Creators</div>
+      <div className="list-heading">Bottom 10 Creators</div>
       {bottomCreatorLoader ? (
         <CreatorLoader count={[1, 2, 3, 4]} />
       ) : (
@@ -42,9 +42,9 @@ const RightSection = ({ filterBtn }) => {
         </div>
       )}
 
-      <hr className="border-b-2 border-white rounded-full overflow-hidden w-full" />
+      <hr className="separator" />
 
-      <div className="text-base mb-2.5 font-light text-white">Top Revenue Months</div>
+      <div className="list-heading">Top Revenue Months</div>
       {loading ? (
         <CreatorLoader count={[1, 2, 3, 4]} />
       ) : (

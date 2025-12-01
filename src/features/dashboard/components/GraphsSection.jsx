@@ -1,4 +1,5 @@
 import Select from "@components/Select";
+import { SelectComponent } from "@components";
 import AreaChartComponent from "./AreaChart";
 import LegendChartColor from "./LegendChartColor";
 import StackedBarChart from "./StackedBarChart";
@@ -28,11 +29,11 @@ const GraphsSection = () => {
   };
 
   return (
-    <div className="flex flex-col gap-9 mt-8">
+    <div style={{ display: "flex", flexDirection: "column", gap: "34px", marginTop: "30px" }}>
       <div className="podcast-graph-wrapper">
         <div className="podcast-graph-header">
           <div className="heading">Content Stats</div>
-          <div className="right-section text-light-grey-text">
+          <div className="right-section light-txt">
             Total Uploads {overallContentStats?.totalUploads}
             <Select
               size="middle"
@@ -44,7 +45,7 @@ const GraphsSection = () => {
                 textColor: "black",
                 optionsBg: "white"
               }}
-              color={"white"}
+              color={"black"}
             />
           </div>
         </div>
@@ -64,36 +65,30 @@ const GraphsSection = () => {
           <LegendChartColor createrViewer={createrViewer} />
 
           <div className="right-section">
-            <Select
-              onChange={(value) => {
-                const option = chartOptions.find(opt => opt.value === value);
-                setCreaterViewer(option?.value || value);
-              }}
+            <SelectComponent
+              onChange={(e) => setCreaterViewer(e)}
               size="middle"
-              value={chartOptions.find(opt => opt.value === createrViewer)?.value || chartOptions[0]?.value}
+              value={chartOptions[0]}
               options={chartOptions}
               customeStyle={{
                 bg: "white",
                 textColor: "black",
                 optionsBg: "white"
               }}
-              color={"white"}
+              color={"black"}
             />
 
-            <Select
-              onChange={(value) => {
-                const option = graphDataOptions.find(opt => opt.value === value);
-                setFilterTime(option?.value || value);
-              }}
+            <SelectComponent
+              onChange={(e) => setFilterTime(e)}
               size="middle"
-              value={graphDataOptions.find(opt => opt.value === filterTime)?.value || graphDataOptions[2]?.value}
+              value={graphDataOptions[2]}
               options={graphDataOptions}
               customeStyle={{
                 bg: "white",
                 textColor: "black",
                 optionsBg: "white"
               }}
-              color={"white"}
+              color={"black"}
             />
           </div>
         </div>
@@ -111,7 +106,7 @@ const GraphsSection = () => {
       <div className="podcast-graph-wrapper">
         <div className="podcast-graph-header">
           <div className="heading">Financial Stats</div>
-          <div className="right-section text-light-grey-text">
+          <div className="right-section light-txt">
             Overall Earning: ${podcastStats.overview.totalEarnings.toLocaleString()}
             <Select
               size="middle"
@@ -123,7 +118,7 @@ const GraphsSection = () => {
                 textColor: "black",
                 optionsBg: "white"
               }}
-              color={"white"}
+              color={"black"}
             />
           </div>
         </div>

@@ -7,6 +7,7 @@ import ButtonComponent from "@components/Button";
 import ModalComponent from "@features/common/components/Modal";
 import ConfirmModal from "@features/common/components/ConfirmModal";
 import TableComponent from "@components/Table";
+import TableHeaderWrapper from "@components/TableHeaderWrapper";
 import { theme } from "@utils/theme";
 import { addMoreTime } from "@utils/constant";
 import { DeleteIcon, TimeIcon } from "@utils/svgFile";
@@ -59,10 +60,10 @@ const EventDetail = () => {
       <Header heading="Events and Podcasts" showSearch={false} />
       {Object.values(eventDetail).length ? (
         <div className="scroll-without-header">
-          <div className="flex flex-wrap justify-between items-center gap-3 rounded-xl bg-[rgba(10,10,10,0.85)] px-5 py-4 mb-5 mt-5">
+          <div className="flex flex-wrap justify-between items-center gap-3 rounded-xl mb-5 mt-5">
             <div className="flex items-center gap-2.5">
               <BackButton />
-              <div className="text-2xl font-semibold text-white">Event Details</div>
+              <div className="text-lg text-white">Event Details</div>
             </div>
             {(eventDetail?.status == "accepted" || eventDetail?.status == "started") && (
               <div className="flex gap-4">
@@ -72,6 +73,7 @@ const EventDetail = () => {
                   width="90px"
                   size="middle"
                   onClick={handleStartEvent}
+                  height="32px"
                 />
                 <ButtonComponent
                   text="Cancel Event"
@@ -79,6 +81,7 @@ const EventDetail = () => {
                   width="90px"
                   size="middle"
                   onClick={handleDeleteModal}
+                  height="32px"
                 />
               </div>
             )}
@@ -90,6 +93,7 @@ const EventDetail = () => {
               bg={theme.red}
               onClick={() => onWatchTrailer()}
               width="90px"
+              height="40px"
             />
           </div>
           {eventDetail?.contentDetail?.length > 0 && (
@@ -151,15 +155,18 @@ const EventDetail = () => {
                 <div className="mb-4 text-base">Peak Views</div>
                 <AreaChartComponent data={{ periodData: [] }} />
               </div>
-              <div className="px-4">
-                <div className="text-xl font-semibold text-white mb-4">Event Tickets History</div>
+              <TableHeaderWrapper
+                heading="Event Tickets History"
+                link=""
+                dataLength={ticketHistoryRows?.length}
+              >
                 <TableComponent
                   columns={ticketHistoryColumns}
                   data={ticketHistoryRows}
                   defaultTheme={false}
                   rowKey="key"
                 />
-              </div>
+              </TableHeaderWrapper>
             </>
           )}
           {deleteModal && (

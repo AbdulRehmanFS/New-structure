@@ -12,23 +12,30 @@ const ConfirmModal = ({
   icon,
   iconClass,
   loading = false,
-  mainHeading
+  mainHeading,
 }) => (
-  <div className="flex w-[min(520px,90vw)] flex-col rounded-2xl bg-white p-6 text-center text-base text-dark-grey-text shadow-lg box-border">
-    <div className="icon flex justify-center mb-2">
-      <span className={iconClass ?? "logout"}>
-        {icon ?? <LogoutIcon height="40px" width="40px" />}
-      </span>
-    </div>
-    <div className="text-[22px] font-semibold">{mainHeading ?? "Are you sure?"}</div>
-    <div className="mt-3 text-sm text-grey-text px-2">{subheading}</div>
-    <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-end w-full box-border">
-      <div className="flex-1 sm:flex-initial sm:w-auto">
-        <ButtonComponent text="Cancel" onClick={handleCancel} width="100%" size="middle" />
+  <div className="flex flex-col bg-white rounded-[6px] min-w-[370px] max-w-[550px] overflow-hidden mx-auto">
+    <div className="py-5 px-6 text-center text-base">
+      <div className="flex justify-center mb-2">
+        <span className={iconClass ?? "logout"}>
+          {icon ?? <LogoutIcon height="40px" width="40px" />}
+        </span>
       </div>
-      <div className="flex-1 sm:flex-initial sm:w-auto">
+      <div className="text-[22px] font-medium" style={{ color: theme.darkGreyText }}>
+        {mainHeading ?? "Are you sure?"}
+      </div>
+      <div className="mx-auto mt-3 pt-3 w-[80%] min-w-[300px] text-base" style={{ color: theme.greyText }}>
+        {subheading}
+      </div>
+      <div className="flex justify-end gap-3 mt-5">
         <ButtonComponent
-          width="100%"
+          text="Cancel"
+          onClick={handleCancel}
+          width="50px"
+          size="middle"
+        />
+        <ButtonComponent
+          width="50px"
           size="middle"
           text={confirmButtonText}
           onClick={handleConfirm}
@@ -36,22 +43,22 @@ const ConfirmModal = ({
           bg={theme.red}
         />
       </div>
+      <style>{`
+        .logout path {
+          fill: ${theme.greyText};
+        }
+        .delete svg {
+          fill: ${theme.red};
+        }
+        .success svg {
+          fill: green;
+        }
+        .warning svg {
+          fill: #f6e113;
+        }
+      `}</style>
     </div>
-    <style jsx>{`
-      .icon .logout path {
-        fill: ${theme.greyText};
-      }
-      .icon .delete svg {
-        fill: ${theme.red};
-      }
-      .icon .success svg {
-        fill: green;
-      }
-      .icon .warning svg {
-        fill: #f6e113;
-      }
-    `}</style>
   </div>
 );
-export default memo(ConfirmModal);
 
+export default memo(ConfirmModal);

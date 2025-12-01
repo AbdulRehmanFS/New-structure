@@ -15,13 +15,15 @@ const FinanceSection = ({ filterBtn }) => {
   ];
 
   return (
-    <div className="py-5 mr-2.5">
-      <div className="text-lg text-white">Finance Information</div>
-      <div className="flex items-end gap-3 flex-wrap border-b border-white py-5 [&_.dotted-line:last-child]:hidden">
+    <div className="finance-section">
+      <div className="heading">Finance Information</div>
+      <InfoCardWrapper>
         {financialItems.map((item, index) => (
-          <div key={item.heading} className="flex items-end gap-3">
-            <div>
-              <div className="mb-3 text-white">{item.heading}</div>
+          <>
+            <div key={item.heading}>
+              <div className="card-heading" style={{ marginBottom: "12px" }}>
+                {item.heading}
+              </div>
               <SimgpleInfoCard count={item.value} loader={statsLoader} icon={<CashIcon color="white" opacity={1} />} />
             </div>
             {index !== financialItems.length - 1 && (
@@ -29,9 +31,9 @@ const FinanceSection = ({ filterBtn }) => {
                 <DottedLine width="59px" />
               </div>
             )}
-          </div>
+          </>
         ))}
-      </div>
+      </InfoCardWrapper>
     </div>
   );
 };

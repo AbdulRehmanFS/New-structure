@@ -2,6 +2,7 @@ import { memo, useEffect } from "react";
 import { Form } from "antd";
 import ButtonComponent from "@components/Button";
 import TextEditor from "@components/TextEditor";
+import { theme } from "@utils/theme";
 
 const ContentForm = ({ handleSubmit, preContent, loading = false }) => {
   const [form] = Form.useForm();
@@ -17,40 +18,40 @@ const ContentForm = ({ handleSubmit, preContent, loading = false }) => {
   };
 
   return (
-    <div className="bg-[rgba(10,10,10,0.85)] px-5 py-4 rounded-xl">
-      <Form
-        form={form}
-        name="basic"
-        style={{
-          width: "100%",
-        }}
-        initialValues={{
-          content: preContent || "",
-        }}
-        layout="vertical"
-        onFinish={onFinish}
-        autoComplete="off"
-        className="content-form-wrapper">
-        <Form.Item
-          name="content"
-          rules={[
-            {
-              required: true,
-              message: "Please input your content",
-            },
-          ]}>
-          <TextEditor editorContent={preContent} />
-        </Form.Item>
+    <Form
+      form={form}
+      name="basic"
+      style={{
+        width: "100%",
+      }}
+      initialValues={{
+        content: preContent || "",
+      }}
+      layout="vertical"
+      onFinish={onFinish}
+      autoComplete="off"
+      className="[&_.content-textarea::placeholder]:text-[rgba(0,0,0,0.73)] [&_.content-textarea]:p-5">
+      <Form.Item
+        name="content"
+        rules={[
+          {
+            required: true,
+            message: "Please input your content",
+          },
+        ]}>
+        <TextEditor editorContent={preContent} />
+      </Form.Item>
 
-        <ButtonComponent
-          type="primary"
-          htmlType="submit"
-          text="Update Content"
-          bg="rgba(196, 196, 196, 0.23)"
-          loading={loading}
-        />
-      </Form>
-    </div>
+      <ButtonComponent
+        type="primary"
+        htmlType="submit"
+        text="Update Content"
+        size="large"
+        bg={theme.lightPrimaryColor}
+        loading={loading}
+        height="40px"
+      />
+    </Form>
   );
 };
 

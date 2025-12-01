@@ -17,17 +17,20 @@ const NotificationType = ({ onChange, value }) => {
       <Radio.Group
         onChange={onChange}
         value={value}
-        className="flex flex-col gap-2.5 w-full [&_.ant-radio-wrapper]:flex [&_.ant-radio-wrapper]:flex-row-reverse [&_.ant-radio-wrapper]:justify-between [&_.ant-radio-wrapper::after]:content-none"
+        className="notification-type-radio-group w-full"
+        style={{ display: "flex", flexDirection: "column", gap: "10px", width: "100%" }}
       >
         <Radio
           value={1}
-          className="text-light-white bg-grey-2 py-1.5 px-5 pr-1.5 rounded"
+          className="text-light-white bg-grey-2 rounded w-full"
+          style={{ padding: "5px 20px 5px 7px" }}
         >
           Send Push Notification
         </Radio>
         <Radio
           value={2}
-          className="text-light-white bg-grey-2 py-1.5 px-5 pr-1.5 rounded"
+          className="text-light-white bg-grey-2 rounded w-full"
+          style={{ padding: "5px 20px 5px 7px" }}
         >
           Send Email Notification
         </Radio>

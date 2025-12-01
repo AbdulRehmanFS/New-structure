@@ -32,8 +32,8 @@ const EventListing = () => {
 
   return (
     <div className="mt-5">
-      <div className="flex flex-wrap justify-between items-center gap-3 rounded-xl bg-[rgba(10,10,10,0.85)] px-5 py-4 mb-5">
-        <div className="text-2xl font-semibold text-white">Events Listing</div>
+      <div className="flex flex-wrap justify-between items-center gap-3 rounded-xl  mb-5">
+        <div className="text-lg text-white">Events Listing</div>
         <div className="flex items-center gap-2.5">
           <ButtonComponent
             text="Archive"
@@ -41,6 +41,7 @@ const EventListing = () => {
             size="middle"
             onClick={() => navigateEventRequest(1)}
             bg={theme.buttonColor}
+            height="32px"
           />
           <ButtonComponent
             text="Requests"
@@ -48,6 +49,7 @@ const EventListing = () => {
             size="middle"
             onClick={() => navigateEventRequest(2)}
             bg={theme.buttonColor}
+            height="32px"
           />
           <SelectComponent
             size="middle"
@@ -58,6 +60,7 @@ const EventListing = () => {
             textColor="white"
             optionsBg={theme.screenBackground}
             border="transparent"
+            height="32px"
           />
         </div>
       </div>

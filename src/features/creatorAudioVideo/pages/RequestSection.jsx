@@ -52,10 +52,10 @@ const RequestSection = () => {
     <>
       <Header handleSearchData={handleSearchData} heading="Content Approval" />
       <div className="scroll-without-header">
-        <div className="flex flex-wrap justify-between items-center gap-3 rounded-xl bg-[rgba(10,10,10,0.85)] px-5 py-4 mb-5 mt-5">
+        <div className="flex flex-wrap justify-between items-center  rounded-xl mb-5 mt-5">
           <div className="flex items-center gap-2">
             <BackButton />
-            <div className="text-2xl font-semibold text-white">{getHeading()}</div>
+            <div className="text-lg text-white">{getHeading()}</div>
           </div>
         </div>
         <TableComponent columns={columns} data={creatorRequest} loading={loading} />

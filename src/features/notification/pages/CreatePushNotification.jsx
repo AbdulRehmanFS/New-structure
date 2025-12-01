@@ -4,6 +4,7 @@ import ButtonComponent from "@components/Button";
 import NotificationType from "../components/NotificationType";
 import PushNotificationForm from "../components/PushNotificationForm";
 import EmailNotificationForm from "../components/EmailNotificationForm";
+import { theme } from "@utils/theme";
 
 const CreatePushNotification = () => {
   const [notification, setNotification] = useState(1);
@@ -14,21 +15,21 @@ const CreatePushNotification = () => {
     <>
       <Header showSearch={false} heading="Notifications" />
       <div className="w-full">
-        <div className="flex justify-between items-center w-full my-10">
+        <div className="flex justify-between items-center w-full" style={{ margin: "40px 0px" }}>
           <div className="text-lg text-white">Push Notification</div>
-          <div className="flex gap-2.5">
+          <div className="flex" style={{ gap: "10px" }}>
             <ButtonComponent
               text="Save Draft"
               width="100px"
               height="30px"
-              bg="screen-bg"
+              bg={theme.screenBackground}
               showBorder
             />
             <ButtonComponent
               text="Send"
               width="100px"
               height="30px"
-              bg="primary"
+              bg={theme.primaryColor}
             />
           </div>
         </div>

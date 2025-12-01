@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import TableComponent from "@components/Table";
 import SearchField from "@components/SearchField";
 import ButtonComponent from "@components/Button";
+import { theme } from "@utils/theme";
 
 const PushNotificationListing = () => {
   const navigate = useNavigate();
@@ -67,7 +68,7 @@ const PushNotificationListing = () => {
         />
         <ButtonComponent
           text="Create Push Notification"
-          bg="primary"
+          bg={theme.primaryColor}
           width="200px"
           height="40px"
           onClick={() => navigate("/createpush-notification")}

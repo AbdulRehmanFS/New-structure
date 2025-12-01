@@ -10,11 +10,11 @@ const SignInForm = () => {
   return (
     <Form
       name="basic"
-      style={{ width: "100%" }}
+      style={{ width: "100%", padding: "30px" }}
       layout="vertical"
       onFinish={onFinish}
       autoComplete="off"
-      className="border border-grey-border bg-white p-8 rounded-xl [&_.heading]:text-primary-light [&_.heading]:text-[26px] [&_.heading]:underline [&_.heading]:underline-offset-2 [&_.heading]:flex [&_.heading]:justify-center [&_.heading]:mb-4 [&_.heading]:font-semibold [&_.forgot-password]:text-dark-grey-text [&_.forgot-password]:leading-5 [&_.forgot-password]:underline [&_.forgot-password]:text-center [&_.forgot-password]:cursor-pointer [&_.custom-button]:mt-4 [&_.custom-button]:h-[45px] [&_.mid-password-section]:flex [&_.mid-password-section]:justify-end [&_.mid-password-section]:my-2 [&_.mid-password-section]:text-xs [&_.ant-input]:!text-black"
+      className="border border-grey-border bg-white rounded-xl [&_.heading]:text-primary-light [&_.heading]:text-[26px] [&_.heading]:underline [&_.heading]:underline-offset-[6px] [&_.heading]:flex [&_.heading]:justify-center [&_.heading]:mb-4 [&_.heading]:font-semibold [&_.forgot-password]:text-dark-grey-text [&_.forgot-password]:leading-[20.4px] [&_.forgot-password]:underline [&_.forgot-password]:text-center [&_.forgot-password]:cursor-pointer [&_.custom-button]:mt-4 [&_.custom-button]:h-[45px] [&_.mid-password-section]:flex [&_.mid-password-section]:justify-end [&_.mid-password-section]:my-2 [&_.mid-password-section]:text-xs [&_.ant-input]:!text-black"
     >
       <div className="heading">Sign in</div>
       <Form.Item
@@ -66,6 +66,7 @@ const SignInForm = () => {
         text="Sign in"
         bg={theme.lightPrimaryColor}
         loading={loading}
+        height="45px"
       />
     </Form>
   );

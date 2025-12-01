@@ -1,11 +1,24 @@
-import { useState } from "react";
+import { useEffect } from "react";
+import TabComponent from "@components/Tabs";
 import Header from "@layouts/Header";
 import CategoriesSection from "../components/CategoriesSection";
 
-export default function CategoriesManagement() {
-  const [searchValue, setSearchValue] = useState("");
+const defaultItems = [
+  {
+    key: "1",
+    label: "Categories",
+    children: <CategoriesSection />,
+  },
+];
 
-  const handleSearchData = (value) => setSearchValue(value || "");
+const CategoriesManagement = () => {
+  const getCategoriesList = () => {};
+
+  const handleSearchData = () => {};
+
+  useEffect(() => {
+    getCategoriesList();
+  }, []);
 
   return (
     <>
@@ -14,10 +27,9 @@ export default function CategoriesManagement() {
         heading="Categories Management"
         placeholder="Search Categories"
       />
-      <div className="scroll-without-header">
-        <CategoriesSection searchValue={searchValue} />
-      </div>
+      <TabComponent items={defaultItems} />
     </>
   );
-}
+};
 
+export default CategoriesManagement;

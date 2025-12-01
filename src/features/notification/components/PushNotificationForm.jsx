@@ -4,6 +4,7 @@ import ButtonComponent from "@components/Button";
 import SelectComponent from "@components/Select";
 import { notificationRole } from "@utils/constant";
 import InputComponent from "@components/Input";
+import { theme } from "@utils/theme";
 import useSendNotification from "../hooks/useSendNotification";
 
 const PushNotificationForm = ({ type }) => {
@@ -21,7 +22,7 @@ const PushNotificationForm = ({ type }) => {
       form={form}
     >
       <Form.Item
-        label={<label className="text-light-white text-sm font-medium">Select User Type</label>}
+        label={<label className="label">Select User Type</label>}
         name="user_role"
         rules={[
           {
@@ -35,7 +36,7 @@ const PushNotificationForm = ({ type }) => {
       </Form.Item>
       <Form.Item
         name="content"
-        label={<label className="text-light-white text-sm font-medium">Send Push Notifications</label>}
+        label={<label className="label">Send Push Notifications</label>}
         rules={[
           {
             required: true,
@@ -44,7 +45,7 @@ const PushNotificationForm = ({ type }) => {
         ]}
       >
         <InputComponent
-          className="push-notification-textarea"
+          className="push-notification-textarea mb-5"
           rowColumn={5}
           placeholder="Message Body"
           bg="rgba(196, 196, 196, 0)"
@@ -57,8 +58,10 @@ const PushNotificationForm = ({ type }) => {
         type="primary"
         htmlType="submit"
         text="Send Push Notification"
-        bg="primary-light"
+        bg={theme.lightPrimaryColor}
         loading={loader}
+        height="40px"
+        size="large"
       />
     </Form>
   );

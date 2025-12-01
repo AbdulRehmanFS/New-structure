@@ -58,7 +58,7 @@ export default function EventPodcast() {
         placeholder="Search Live Events and Contents"
       />
       <div className="scroll-without-header">
-        <div className="flex justify-between items-center mt-5">
+        <div className="flex flex-wrap justify-between items-center gap-3 rounded-xl mb-5 mt-5">
           <div className="flex gap-2.5">
             <ButtonComponent
               text="Events"
@@ -67,6 +67,7 @@ export default function EventPodcast() {
               showBorder={selectedBtn === "event"}
               bg={selectedBtn === "event" ? theme.white : theme.buttonColor}
               onClick={handleEventNavigate}
+              height="32px"
             />
             <ButtonComponent
               text="Contents"
@@ -75,6 +76,7 @@ export default function EventPodcast() {
               showBorder={selectedBtn === "content"}
               bg={selectedBtn === "content" ? theme.white : theme.buttonColor}
               onClick={handleNavigate}
+              height="32px"
             />
           </div>
           <DropDownComponent
@@ -82,6 +84,7 @@ export default function EventPodcast() {
             textColor="black"
             background="white"
             onClick={handleContentDropdown}
+            height="32px"
           >
             <div
               className="flex justify-between items-center rounded-md cursor-pointer h-8"

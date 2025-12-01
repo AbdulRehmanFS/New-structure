@@ -31,12 +31,12 @@ const TableComponent = ({
         },
       }}
     >
-      <div className="table-wrapper">
+      <div className="table-wrapper overflow-x-auto">
         <Table
           columns={columns}
           dataSource={data}
           rowKey={rowKey}
-          scroll={{ x: 400 }}
+          scroll={{ x: "max-content" }}
           loading={loading}
           size="small"
           pagination={false}
