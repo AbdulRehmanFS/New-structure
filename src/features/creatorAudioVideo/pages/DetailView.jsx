@@ -46,12 +46,12 @@ function DetailView() {
               {watchVideoTrailerBtn && (
                 <div className="my-5">
                   {contentDetail?.type === "video" ? (
-                    <div className="w-[90%] h-[380px] flex items-center justify-center">
+                    <div className="w-[90%] h-[380px] flex items-center justify-center bg-black overflow-hidden" style={{ border: `1px solid ${theme.midGrey}` }}>
                       <video
                         width="100%"
                         height="100%"
                         className="bg-black"
-                        style={{ border: `1px solid ${theme.midGrey}`, objectFit: "contain" }}
+                        style={{ objectFit: "contain", maxWidth: "100%", maxHeight: "100%" }}
                         controls>
                         <source src={contentDetail?.trailer} />
                         Your browser does not support the video tag.
@@ -83,12 +83,12 @@ function DetailView() {
               {!watchVideoTrailerBtn && (
                 <div className="my-5">
                   {contentDetail?.type === "video" ? (
-                    <div className="w-[90%] h-[380px] flex items-center justify-center">
+                    <div className="w-[90%] h-[380px] flex items-center justify-center bg-black overflow-hidden" style={{ border: `1px solid ${theme.midGrey}` }}>
                       <video
                         width="100%"
                         height="100%"
                         className="bg-black"
-                        style={{ border: `1px solid ${theme.midGrey}`, objectFit: "contain" }}
+                        style={{ objectFit: "contain", maxWidth: "100%", maxHeight: "100%" }}
                         controls>
                         <source src={contentDetail?.content_url} />
                         Your browser does not support the video tag.

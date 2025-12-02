@@ -31,7 +31,10 @@ const TableComponent = ({
         },
       }}
     >
-      <div className="table-wrapper overflow-x-auto">
+      <div 
+        className="table-wrapper overflow-x-auto [&::-webkit-scrollbar]:w-0 [&::-webkit-scrollbar]:h-0" 
+        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+      >
         <Table
           columns={columns}
           dataSource={data}

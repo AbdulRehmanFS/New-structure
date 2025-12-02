@@ -139,7 +139,7 @@ function CategoryList({ list, updatedList }) {
     <>
       <ListSectionStyle>
         <div className="category-info">
-          <div className="flex-gap">
+          <div className="flex-gap flex-1">
             <span
               className={`${showContent && "rotate-icon"} filter-icon`}
               onClick={handleFilterIcon}
@@ -152,7 +152,7 @@ function CategoryList({ list, updatedList }) {
                 <InputComponent
                   value={inputText}
                   onChange={(e) => setInputText(e?.target.value)}
-                  style={{ border: "transparent" }}
+                  style={{ border: "transparent", flex: 1, minWidth: "120px" }}
                   bg="transparent"
                   border="transparent"
                 />
@@ -165,7 +165,7 @@ function CategoryList({ list, updatedList }) {
                 </span>
               </>
             ) : (
-              inputText ?? "---"
+              <span className="text-sm sm:text-base break-words">{inputText ?? "---"}</span>
             )}
             <SwitchComponent
               style={{
@@ -178,9 +178,11 @@ function CategoryList({ list, updatedList }) {
             />
           </div>
           <div className="action-buttons flex-gap">
-            {list?.videoCount
-              ? `${list?.videoCount} Videos`
-              : "No videos found yet!"}
+            <span className="text-xs sm:text-sm whitespace-nowrap">
+              {list?.videoCount
+                ? `${list?.videoCount} Videos`
+                : "No videos found yet!"}
+            </span>
             <IconWrapper>
               <UploadIcon height="18px" width="18px" fill={theme.white} />
             </IconWrapper>
@@ -245,10 +247,19 @@ const ListSectionStyle = styled.div`
   background: rgb(10 10 10);
   padding: 15px 20px;
   border-radius: 12px;
+  @media (max-width: 640px) {
+    padding: 12px 15px;
+  }
   .category-info {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    gap: 12px;
+    @media (min-width: 640px) {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0;
+    }
   }
   .ant-switch {
     min-width: 38px;
@@ -257,12 +268,26 @@ const ListSectionStyle = styled.div`
     display: flex;
     gap: 8px;
     align-items: center;
+    flex-wrap: wrap;
+    @media (max-width: 640px) {
+      gap: 6px;
+    }
   }
   .action-buttons {
     color: ${theme.greyText};
+    font-size: 14px;
+    @media (max-width: 640px) {
+      font-size: 12px;
+      width: 100%;
+      justify-content: space-between;
+    }
   }
   .view-btn {
     cursor: pointer;
+    white-space: nowrap;
+    @media (max-width: 640px) {
+      font-size: 12px;
+    }
   }
   .filter-icon {
     display: flex;
@@ -278,14 +303,23 @@ const ListSectionStyle = styled.div`
     margin-top: 12px;
     scrollbar-width: thin;
     scrollbar-color: white transparent;
+    @media (max-width: 640px) {
+      height: 140px;
+      gap: 6px;
+    }
   }
   .content {
     display: flex;
     flex-direction: column;
+    flex-shrink: 0;
     img {
       border-radius: 10px;
       margin-bottom: 6px;
       object-fit: cover;
+      @media (max-width: 640px) {
+        height: 90px;
+        width: 90px;
+      }
     }
   }
   .rotate-icon svg {
@@ -294,5 +328,8 @@ const ListSectionStyle = styled.div`
   .content-desc {
     font-size: 10px;
     color: rgba(151, 151, 151, 1);
+    @media (max-width: 640px) {
+      font-size: 9px;
+    }
   }
 `;

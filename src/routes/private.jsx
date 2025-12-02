@@ -55,6 +55,7 @@ import ReportDetails from "@features/reports/pages/ReportDetails";
 import NotificationActivity from "@features/notification/pages/NotificationActivity";
 import AgeVerification from "@features/userManagement/pages/AgeVerification";
 import AgeVerificationDetail from "@features/userManagement/pages/AgeVerificationDetail";
+import UserAndAccess from "@features/userAndAccess/pages/UserAndAccess";
 
 const privatePath = [
   { path: "/dashboard", element: <Dashboard /> },
@@ -137,7 +138,8 @@ const privatePath = [
   { path: "/notification-activity", element: <NotificationActivity /> },
   { path: "/reports", element: <Reports /> },
   { path: "/report-details", element: <ReportDetails /> },
-  { path: "/earnings", element: <Earnings /> }
+  { path: "/earnings", element: <Earnings /> },
+  { path: "/user-and-access", element: <UserAndAccess /> }
 ];
 
 export { privatePath };

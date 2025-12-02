@@ -5,13 +5,22 @@ export const OuterWrapper = styled.div`
   padding: 20px 0;
   display: flex;
   flex-direction: column;
+  @media (max-width: 640px) {
+    padding: 15px 0;
+  }
 `;
 
 export const HeaderSection = styled.div`
   font-size: 18px;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  gap: 12px;
+  @media (min-width: 640px) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0;
+  }
 `;
 
 export const ViewerAction = styled.div`

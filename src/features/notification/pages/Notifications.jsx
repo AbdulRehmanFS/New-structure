@@ -14,7 +14,7 @@ const Notifications = () => {
       <Header showSearch={false} heading="Notifications" />
       <div className="scroll-without-header">
         <div>
-          <p className="text-white">
+          <p className="text-white text-base sm:text-lg">
             {notification === 1 ? "Push Notification" : "Automated Notification"}
           </p>
         </div>

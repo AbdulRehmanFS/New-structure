@@ -35,8 +35,7 @@ const SearchField = ({
       }}
     >
       <Input
-        className="[&_svg]:fill-white [&_input]:!text-white [&_input::placeholder]:!text-grey-text"
-        style={{ width: "330px" }}
+        className="[&_svg]:fill-white [&_input]:!text-white [&_input::placeholder]:!text-grey-text w-full sm:w-[280px] md:w-[330px]"
         placeholder={placeholder || "Search podcast, live shows, and creators"}
         size={size || "large"}
         allowClear

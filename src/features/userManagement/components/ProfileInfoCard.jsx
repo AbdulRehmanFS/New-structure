@@ -21,9 +21,9 @@ export default function ProfileInfoCard({
 
   return (
     <div className="relative rounded-[10px] border border-grey-border pb-[10px] profile-wrapper">
-      <div className="bg-button-color py-3 px-[18px] rounded-[6px] text-light-white">Personal Details</div>
+      <div className="bg-button-color py-2.5 sm:py-3 px-3 sm:px-[18px] rounded-[6px] text-light-white text-sm sm:text-base">Personal Details</div>
       {list ? (
-        <Row gutter={[20, 0]} className={`${type === "viewer" ? "py-5 px-5" : "py-5 px-[10px] pb-10"} flex flex-wrap md:flex-nowrap items-center md:items-start`}>
+        <Row gutter={[20, 0]} className={`${type === "viewer" ? "py-3 px-3 sm:py-5 sm:px-5" : "py-3 px-3 sm:py-5 sm:px-[10px] pb-6 sm:pb-10"} flex flex-wrap md:flex-nowrap items-center md:items-start`}>
           {/* LEFT SIDE IMAGE */}
           {type === "viewer" ? (
             <Col xs={24} sm={24} md={6} lg={6} className="flex justify-center md:justify-start flex-col mb-4 md:mb-0">

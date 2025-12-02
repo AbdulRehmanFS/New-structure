@@ -27,23 +27,27 @@ const VideoSection = ({ searchText = "" }) => {
 
   return (
     <div className="mt-5">
-      <div className="flex flex-wrap justify-between items-center gap-3 rounded-xl bg-[rgba(10,10,10,0.85)] px-5 py-4 mb-5">
-        <div className="text-2xl font-semibold text-white">Video Listing</div>
-        <div className="flex items-center gap-2.5">
-          <ButtonComponent
-            text="Archive"
-            width="110px"
-            size="middle"
-            bg={theme.buttonColor}
-            onClick={() => navigateRequestSection(1)}
-          />
-          <ButtonComponent
-            text="Requests"
-            width="100px"
-            size="middle"
-            bg={theme.buttonColor}
-            onClick={() => navigateRequestSection(2)}
-          />
+      <div className="flex flex-col sm:flex-row flex-wrap justify-between items-start sm:items-center gap-3 rounded-xl bg-[rgba(10,10,10,0.85)] px-3 sm:px-5 py-4 mb-5">
+        <div className="text-xl sm:text-2xl font-semibold text-white">Video Listing</div>
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 w-full sm:w-auto">
+          <div className="w-full sm:w-auto sm:min-w-[110px]">
+            <ButtonComponent
+              text="Archive"
+              width="100%"
+              size="middle"
+              bg={theme.buttonColor}
+              onClick={() => navigateRequestSection(1)}
+            />
+          </div>
+          <div className="w-full sm:w-auto sm:min-w-[100px]">
+            <ButtonComponent
+              text="Requests"
+              width="100%"
+              size="middle"
+              bg={theme.buttonColor}
+              onClick={() => navigateRequestSection(2)}
+            />
+          </div>
         </div>
       </div>
       <TableComponent columns={columns} data={userListing} loading={loading} />

@@ -11,7 +11,8 @@ import {
   NotificationIcon,
   ReportIcon,
   UnarchiveIcon,
-  UserIcon
+  UserIcon,
+  UsersAndAccessIcon
 } from "@utils/svgFile";
 import dayjs from "dayjs";
 import axiosInterceptor from "@services/api/interceptor";
@@ -65,6 +66,11 @@ export const navbarList = [
     name: "Earnings",
     icon: <EarningIcon width={24} height={20} />,
     route: "/earnings"
+  },
+  {
+    name: "Users and Access",
+    icon: <UsersAndAccessIcon width={27} height={27} />,
+    route: "/user-and-access"
   }
 ];
 
@@ -312,6 +318,7 @@ const notification = ["notifications", "createpush-notification"];
 const report = ["reports","report-details"];
 const earning = ["earnings"];
 const categoriesManagement = ["categories-management"];
+const userAndAccess = ["user-and-access"];
 
 export const checkCurrentRoute = (location) => {
   const arr = location?.pathname.split("/");
@@ -325,6 +332,7 @@ export const checkCurrentRoute = (location) => {
   if (notification.includes(route)) return "Notifications";
   if (report.includes(route)) return "Reports";
   if (earning.includes(route)) return "Earnings";
+  if (userAndAccess.includes(route)) return "Users and Access";
   return "Dashboard";
 };
 

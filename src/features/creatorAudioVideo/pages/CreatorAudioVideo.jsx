@@ -45,8 +45,8 @@ export default function CreatorAudioVideo() {
         placeholder="Search Audio, Video and Series"
       />
       <div className="scroll-without-header">
-        <div className="flex justify-between items-center mt-5">
-          <div className="flex gap-2.5">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-0 mt-5">
+          <div className="flex flex-wrap gap-2.5 w-full sm:w-auto">
             <ButtonComponent
               size="middle"
               text="Audio"
@@ -84,24 +84,26 @@ export default function CreatorAudioVideo() {
               height="32px"
             />
           </div>
-          <DropDownComponent
-            items={uploadContentOptions}
-            textColor="black"
-            background="white"
-            onClick={handleContentDropdown}
-          >
-            <div 
-              className="flex justify-between items-center rounded-md cursor-pointer h-8"
-              style={{ backgroundColor: theme.primaryColor }}
+          <div className="w-full sm:w-auto">
+            <DropDownComponent
+              items={uploadContentOptions}
+              textColor="black"
+              background="white"
+              onClick={handleContentDropdown}
             >
-              <div className="px-3 py-2 border-r border-black text-white">
-                Upload content
+              <div 
+                className="flex justify-between items-center rounded-md cursor-pointer h-8 w-full sm:w-auto"
+                style={{ backgroundColor: theme.primaryColor }}
+              >
+                <div className="px-3 py-2 border-r border-black text-white text-sm sm:text-base whitespace-nowrap">
+                  Upload content
+                </div>
+                <span className="px-2.5 flex items-center">
+                  <DownTriangleIcon />
+                </span>
               </div>
-              <span className="px-2.5 flex items-center">
-                <DownTriangleIcon />
-              </span>
-            </div>
-          </DropDownComponent>
+            </DropDownComponent>
+          </div>
         </div>
         {audioVideoTab === "audio" ? (
           <AudioSection searchText={searchContent} />

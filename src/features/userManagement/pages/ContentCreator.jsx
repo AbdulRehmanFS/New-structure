@@ -27,25 +27,29 @@ const ContentCreator = ({ searchContent }) => {
 
   return (
     <div className="flex flex-col mt-5 [&_.table-wrapper]:mt-8 [&_.action]:border-b-2 [&_.action]:border-grey-2">
-      <div className="flex flex-wrap justify-between items-center  rounded-xl">
-        <div className="text-lg text-white">Content Creator Listing</div>
-        <div className="flex items-center gap-2.5">
-          <ButtonComponent
-            text="Requests"
-            width="90px"
-            size="middle"
-            bg={theme.white}
-            onClick={() => navigate("/user-management/creator-request")}
-            height="32px"
-          />
-          <SelectComponent
-            size="middle"
-            onChange={handleStatusSelection}
-            value={selectedStatus}
-            options={filterOption}
-            bg="transparent"
-            height="32px"
-          />
+      <div className="flex flex-col sm:flex-row flex-wrap justify-between items-start sm:items-center gap-3 sm:gap-0 rounded-xl">
+        <div className="text-base sm:text-lg text-white">Content Creator Listing</div>
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 w-full sm:w-auto">
+          <div className="w-full sm:w-auto sm:min-w-[90px]">
+            <ButtonComponent
+              text="Requests"
+              width="100%"
+              size="middle"
+              bg={theme.white}
+              onClick={() => navigate("/user-management/creator-request")}
+              height="32px"
+            />
+          </div>
+          <div className="w-full sm:w-auto">
+            <SelectComponent
+              size="middle"
+              onChange={handleStatusSelection}
+              value={selectedStatus}
+              options={filterOption}
+              bg="transparent"
+              height="32px"
+            />
+          </div>
         </div>
       </div>
       <TableComponent columns={columns} data={userListing} loading={loading} />

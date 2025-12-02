@@ -13,7 +13,7 @@ const RightSection = ({ filterBtn }) => {
     useDashCreatorList(filterBtn);
 
   return (
-    <Col xs={7} className="right-section-list h-[calc(100vh-133px)] overflow-auto flex flex-col p-3 gap-2.5 [&_.list-heading]:text-base [&_.list-heading]:mb-2.5 [&_.list-heading]:font-light [&_.separator]:border-b-[8px] [&_.separator]:border-white [&_.separator]:rounded-[30000px] [&_.separator]:overflow-hidden [&_.separator]:w-full" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+    <Col xs={24} sm={7} className="right-section-list h-auto sm:h-[calc(100vh-133px)] overflow-auto flex flex-col p-3 gap-2.5 [&_.list-heading]:text-base [&_.list-heading]:mb-2.5 [&_.list-heading]:font-light [&_.separator]:border-b-[8px] [&_.separator]:border-white [&_.separator]:rounded-[30000px] [&_.separator]:overflow-hidden [&_.separator]:w-full" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
       <div className="list-heading">Top 10 Creators</div>
       {topCreatorLoader ? (
         <CreatorLoader count={[1, 2, 3, 4]} />

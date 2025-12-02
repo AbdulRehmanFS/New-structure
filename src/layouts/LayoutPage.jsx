@@ -1,10 +1,30 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Col, Row } from "antd";
 import { Outlet } from "react-router-dom";
 import Sidebar from "./Sidebar";
 
 export default function LayoutPage() {
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+
+  // Check if screen is mobile on mount and resize
+  useEffect(() => {
+    const checkMobile = () => {
+      const isMobile = window.innerWidth < 640; // sm breakpoint
+      if (isMobile) {
+        setIsSidebarCollapsed(true);
+      }
+    };
+
+    // Check on mount
+    checkMobile();
+
+    // Listen for resize events
+    window.addEventListener('resize', checkMobile);
+
+    return () => {
+      window.removeEventListener('resize', checkMobile);
+    };
+  }, []);
 
   const toggleSidebar = () => {
     setIsSidebarCollapsed((prev) => !prev);

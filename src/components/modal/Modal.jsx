@@ -4,7 +4,7 @@ import { ConfigProvider, Modal } from "antd";
 import { CrossIcon } from "@utils/svgFile";
 
 const ModalComponent = (props) => {
-  const { openModal, setOpenModal, children, bg, closeIconColor } = props;
+  const { openModal, setOpenModal, children, bg, closeIconColor, hideCloseIcon = false } = props;
 
   const isLightBackground = useMemo(() => {
     if (closeIconColor) return closeIconColor === "black";
@@ -37,7 +37,7 @@ const ModalComponent = (props) => {
           open={openModal}
           onCancel={setOpenModal}
           footer={() => ""}
-          closeIcon={<CrossIcon color={iconColor} height="20" width="20" />}
+          closeIcon={hideCloseIcon ? false : <CrossIcon color={iconColor} height="20" width="20" />}
           wrapClassName={`modal-dialog ${isLightBackground ? "modal-white-bg" : "modal-dark-bg"}`}
           centered
           width="auto"

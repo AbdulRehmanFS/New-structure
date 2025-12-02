@@ -58,28 +58,32 @@ export default function ViewerProfile() {
       <Header showSearch={false} heading="User Management" />
       <ViewProfileWrapper className="scroll-without-header">
         <HeaderSection className="top-section">
-          <div className="flex gap-[5px]">
+          <div className="flex gap-[5px] items-center text-base sm:text-lg">
             <BackButton />
-            Viewer Profile
+            <span>Viewer Profile</span>
           </div>
-          <div className="flex gap-2.5">
-            <ButtonComponent
-              text={viewerProfile?.status === "inactive" ? "Reactivate User" : "De-Activate User"}
-              width="135px"
-              size="middle"
-              bg={theme.buttonColor}
-              onClick={handleDeactiveModal}
-              loading={deactiveloading}
-              height="32px"
-            />
-            <ButtonComponent
-              text="Delete User"
-              width="60px"
-              size="middle"
-              bg={theme.white}
-              onClick={handleDeleteModal}
-              height="32px"
-            />
+          <div className="flex flex-col sm:flex-row gap-2.5 w-full sm:w-auto mt-3 sm:mt-0">
+            <div className="w-full sm:w-auto sm:min-w-[135px]">
+              <ButtonComponent
+                text={viewerProfile?.status === "inactive" ? "Reactivate User" : "De-Activate User"}
+                width="100%"
+                size="middle"
+                bg={theme.buttonColor}
+                onClick={handleDeactiveModal}
+                loading={deactiveloading}
+                height="32px"
+              />
+            </div>
+            <div className="w-full sm:w-auto sm:min-w-[90px]">
+              <ButtonComponent
+                text="Delete User"
+                width="100%"
+                size="middle"
+                bg={theme.white}
+                onClick={handleDeleteModal}
+                height="32px"
+              />
+            </div>
           </div>
         </HeaderSection>
         <ProfileInfoCard list={viewerProfile} loading={loading} align="left" type="viewer" />

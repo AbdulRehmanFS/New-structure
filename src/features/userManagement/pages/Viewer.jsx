@@ -26,24 +26,28 @@ function UserViewer({ searchContent }) {
 
   return (
     <div className="flex flex-col mt-5 [&_.table-wrapper]:mt-8 [&_.action]:border-b [&_.action]:border-[rgba(163,163,163,0.45)]">
-      <div className="flex flex-wrap justify-between items-center  rounded-xl">
-        <div className="text-lg text-white">Viewer Listing</div>
-        <div className="flex items-center gap-2.5">
-          <ButtonComponent
-            text="Age Verification"
-            width={"150px"}
-            bg={theme.white}
-            height={"32px"}
-            onClick={() => ageNavigate()}
-          />
-          <SelectComponent
-            size="middle"
-            value={selectedStatus}
-            onChange={handleStatusSelection}
-            options={filterOption}
-            bg="transparent"
-            height="32px"
-          />
+      <div className="flex flex-col sm:flex-row flex-wrap justify-between items-start sm:items-center gap-3 sm:gap-0 rounded-xl">
+        <div className="text-base sm:text-lg text-white">Viewer Listing</div>
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 w-full sm:w-auto">
+          <div className="w-full sm:w-auto sm:min-w-[150px]">
+            <ButtonComponent
+              text="Age Verification"
+              width="100%"
+              bg={theme.white}
+              height="32px"
+              onClick={() => ageNavigate()}
+            />
+          </div>
+          <div className="w-full sm:w-auto">
+            <SelectComponent
+              size="middle"
+              value={selectedStatus}
+              onChange={handleStatusSelection}
+              options={filterOption}
+              bg="transparent"
+              height="32px"
+            />
+          </div>
         </div>
       </div>
       <TableComponent columns={columns} data={userListing} loading={loading} />

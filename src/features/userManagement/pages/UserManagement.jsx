@@ -22,7 +22,7 @@ export default function UserManagement() {
         placeholder="Search Viewer and Creator"
       />
       <div className="scroll-without-header">
-        <div className="flex gap-2.5 mt-5">
+        <div className="flex flex-wrap gap-2.5 mt-5">
           <ButtonComponent
             size="middle"
             text="Viewer"

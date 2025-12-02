@@ -14,9 +14,9 @@ const ConfirmModal = ({
   loading = false,
   mainHeading,
 }) => (
-  <div className="flex flex-col bg-white rounded-[6px] min-w-[370px] max-w-[550px] overflow-hidden mx-auto">
-    <div className="py-5 px-6 text-center text-base">
-      <div className="flex justify-center mb-2">
+  <div className="flex flex-col bg-white rounded-[6px] overflow-hidden">
+    <div className=" text-center text-base">
+      <div className="icon flex justify-center ">
         <span className={iconClass ?? "logout"}>
           {icon ?? <LogoutIcon height="40px" width="40px" />}
         </span>
@@ -24,36 +24,39 @@ const ConfirmModal = ({
       <div className="text-[22px] font-medium" style={{ color: theme.darkGreyText }}>
         {mainHeading ?? "Are you sure?"}
       </div>
-      <div className="mx-auto mt-3 pt-3 w-[80%] min-w-[300px] text-base" style={{ color: theme.greyText }}>
+      <div className="subheading mx-auto pt-3 w-[80%] min-w-[400px] text-base" style={{ color: theme.greyText }}>
         {subheading}
       </div>
-      <div className="flex justify-end gap-3 mt-5">
+      <div className="button-component flex justify-end gap-3 mt-5">
         <ButtonComponent
           text="Cancel"
           onClick={handleCancel}
-          width="50px"
+          width="auto"
           size="middle"
+          bg={theme.black}
+          height="40px"
         />
         <ButtonComponent
-          width="50px"
+          width="auto"
           size="middle"
           text={confirmButtonText}
           onClick={handleConfirm}
           loading={loading}
           bg={theme.red}
+          height="40px"
         />
       </div>
       <style>{`
-        .logout path {
+        .icon .logout path {
           fill: ${theme.greyText};
         }
-        .delete svg {
+        .icon .delete svg {
           fill: ${theme.red};
         }
-        .success svg {
+        .icon .success svg {
           fill: green;
         }
-        .warning svg {
+        .icon .warning svg {
           fill: #f6e113;
         }
       `}</style>

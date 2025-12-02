@@ -46,18 +46,22 @@ const AutomationListing = () => {
 
   return (
     <div>
-      <div className="flex justify-between my-5">
-        <SearchField
-          handleSearch={handleSearch}
-          size="middle"
-          placeholder="Search Auto notifications"
-        />
-        <ButtonComponent
-          text="Create Auto Notification"
-          bg={theme.primaryColor}
-          width="200px"
-          height="40px"
-        />
+      <div className="flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-3 sm:gap-0 my-5">
+        <div className="flex-1 sm:flex-initial">
+          <SearchField
+            handleSearch={handleSearch}
+            size="middle"
+            placeholder="Search Auto notifications"
+          />
+        </div>
+        <div className="w-full sm:w-auto sm:min-w-[200px]">
+          <ButtonComponent
+            text="Create Auto Notification"
+            bg={theme.primaryColor}
+            width="100%"
+            height="40px"
+          />
+        </div>
       </div>
       <TableComponent data={listing} columns={Automationlist} />
     </div>
