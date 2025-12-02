@@ -80,11 +80,11 @@ export default function CreatorReqest() {
       <Header handleSearchData={handleSearchData} heading="User Management" />
       <CreatorRequestWrapper className="scroll-without-header">
         <HeaderSection className="mid-section">
-          <div className="heading">
+          <div className="flex gap-[5px]">
             <BackButton />
             Profile Requests
           </div>
-          <div className="button-component">
+          <div className="flex gap-2.5">
             <ButtonComponent
               text="User Listing"
               width="135px"
@@ -158,10 +158,6 @@ const CreatorRequestWrapper = styled(OuterWrapper)`
   .table-wrapper {
     margin-top: 30px;
   }
-  .heading {
-    display: flex;
-    gap: 5px;
-  }
   .action {
     min-width: 60px !important;
     span {
@@ -170,9 +166,5 @@ const CreatorRequestWrapper = styled(OuterWrapper)`
   }
   .creator-name {
     cursor: pointer;
-  }
-  .button-component {
-    display: flex;
-    gap: 10px;
   }
 `;

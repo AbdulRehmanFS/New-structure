@@ -15,7 +15,7 @@ const AgeVerification = () => {
     <>
       <Header showSearch={true} heading="User Management" handleSearchData={handleSearchData} />
       <Wrapper>
-        <div className="heading">
+        <div className="flex text-base gap-[5px] tracking-[1px] py-2.5">
           <BackButton />
           Age Verification
         </div>
@@ -35,11 +35,4 @@ export default AgeVerification;
 
 const Wrapper = styled.div`
   margin-top: 30px;
-  .heading {
-    display: flex;
-    font-size: 16px;
-    gap: 5px;
-    letter-spacing: 1px;
-    padding: 10px 0;
-  }
 `;

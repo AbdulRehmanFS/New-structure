@@ -34,7 +34,7 @@ const CreatePushNotification = () => {
           </div>
         </div>
         <NotificationType onChange={handleRadioCheck} value={notification} />
-        <div className="line" />
+        <div className="h-px border-t border-white/10 my-[14px]" />
         {notification === 1 ? (
           <PushNotificationForm type={1} />
         ) : (

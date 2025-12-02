@@ -15,9 +15,9 @@ const ResetPasswordForm = () => {
       onFinish={onFinish}
       autoComplete="off"
       ref={formRef}
-      className="border border-grey-border bg-white p-8 rounded-xl [&_.heading]:text-primary-light [&_.heading]:font-bold [&_.heading]:underline [&_.heading]:underline-offset-2 [&_.heading]:justify-center [&_.heading]:text-[24px] [&_.heading]:flex [&_.heading]:gap-8 [&_.content]:text-xs [&_.content]:my-4 [&_.content]:text-grey-text [&_.content]:leading-4 [&_.content]:tracking-wide [&_.custom-button]:my-4 [&_.custom-button]:h-[45px] [&_.ant-input]:text-black"
+      className="border border-grey-border bg-white p-8 rounded-xl [&_.custom-button]:my-4 [&_.custom-button]:h-[45px] [&_.ant-input]:text-black"
     >
-      <div className="heading">Reset Password</div>
+      <div className="text-primary-light font-bold underline underline-offset-2 justify-center text-[24px] flex gap-8">Reset Password</div>
       <Form.Item
         name="password"
         rules={[

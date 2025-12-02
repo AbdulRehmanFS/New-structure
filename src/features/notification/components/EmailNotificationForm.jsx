@@ -13,7 +13,7 @@ const EmailNotificationForm = ({ type }) => {
   return (
     <Form
       name="basic"
-      className="email-notification-form"
+      className="w-full [&_.label]:text-light-white [&_.label]:text-sm [&_.label]:font-medium [&_.input-field]:bg-white [&_.input-field]:text-grey-text [&_.input-field::placeholder]:text-[rgba(196,196,196,0.45)] [&_.email-notification-textarea::placeholder]:text-[rgba(196,196,196,0.45)] [&_.custom-button]:mt-[2%]"
       style={{ width: "100%" }}
       initialValues={{}}
       layout="vertical"
@@ -46,7 +46,7 @@ const EmailNotificationForm = ({ type }) => {
         style={{ marginBottom: "10px" }}
       >
         <InputComponent
-          className="input-field"
+          className="input-field bg-white text-grey-text [&::placeholder]:text-[rgba(196,196,196,0.45)]"
           placeholder="Email Title"
           bg="rgba(196, 196, 196, 0)"
           border="rgba(196, 196, 196, 0.45)"
@@ -63,7 +63,7 @@ const EmailNotificationForm = ({ type }) => {
         ]}
       >
         <InputComponent
-          className="email-notification-textarea"
+          className="email-notification-textarea [&::placeholder]:text-[rgba(196,196,196,0.45)]"
           rowColumn={5}
           placeholder="Message Body"
           bg="rgba(196, 196, 196, 0)"

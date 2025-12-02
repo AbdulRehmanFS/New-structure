@@ -15,19 +15,19 @@ const FinanceSection = ({ filterBtn }) => {
   ];
 
   return (
-    <div className="finance-section">
-      <div className="heading">Finance Information</div>
+    <div className="py-5 mr-2.5">
+      <div>Finance Information</div>
       <InfoCardWrapper>
         {financialItems.map((item, index) => (
           <>
             <div key={item.heading}>
-              <div className="card-heading" style={{ marginBottom: "12px" }}>
+              <div className="mb-3">
                 {item.heading}
               </div>
               <SimgpleInfoCard count={item.value} loader={statsLoader} icon={<CashIcon color="white" opacity={1} />} />
             </div>
             {index !== financialItems.length - 1 && (
-              <div style={{ height: "59px", display: "flex" }}>
+              <div className="h-[59px] flex">
                 <DottedLine width="59px" />
               </div>
             )}

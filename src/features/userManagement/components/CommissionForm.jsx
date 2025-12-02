@@ -1,5 +1,4 @@
 import { useState } from "react";
-import styled from "styled-components";
 import { Form, Input, message } from "antd";
 import { useNavigate } from "react-router-dom";
 import { theme } from "@utils/theme";
@@ -22,11 +21,11 @@ export default function CommissionForm({ creatorId, commissionValue = "" }) {
   };
 
   return (
-    <CommissionFormWrapper>
-      <div className="heading">Set Commission</div>
+    <div className="bg-white w-full max-w-[600px] min-w-[280px] md:max-w-[500px] sm:w-full sm:max-w-full">
+      <div className="font-semibold text-grey-text px-5 py-2.5 text-base md:text-base text-sm border-b-2">Set Commission</div>
       <Form
         name="basic"
-        className="commision-form"
+        className="w-full p-5 md:p-5 sm:p-[15px] [&_.ant-input]:text-grey-text"
         layout="vertical"
         onFinish={onFinish}
         autoComplete="off"
@@ -34,7 +33,7 @@ export default function CommissionForm({ creatorId, commissionValue = "" }) {
           commission: commissionValue
         }}>
         <Form.Item
-          label={<label style={{ color: theme.greyText, fontSize: "14px" }}>Set Commission</label>}
+          label={<label className="text-grey-text text-sm">Set Commission</label>}
           name="commission"
           rules={[
             {
@@ -52,7 +51,7 @@ export default function CommissionForm({ creatorId, commissionValue = "" }) {
             }}
           />
         </Form.Item>
-        <div className="button-container">
+        <div className="mt-[30px] sm:mt-5">
           <ButtonComponent
             type="primary"
             size="middle"
@@ -63,65 +62,7 @@ export default function CommissionForm({ creatorId, commissionValue = "" }) {
           />
         </div>
       </Form>
-    </CommissionFormWrapper>
+    </div>
   );
 }
-
-const CommissionFormWrapper = styled.div`
-  background: ${theme.white};
-  width: 100%;
-  max-width: 600px;
-  min-width: 280px;
-  
-  .commision-form {
-    width: 100%;
-    padding: 20px;
-  }
-  .heading {
-    font-weight: 600;
-    color: rgba(116, 116, 116, 1);
-    padding: 10px 20px;
-    font-size: 16px;
-    border-bottom: 2px solid;
-  }
-  .button-container {
-    margin-top: 30px;
-  }
-  .ant-input {
-    color: ${theme.greyText};
-  }
-
-  /* Tablet styles */
-  @media (max-width: 1024px) {
-    max-width: 500px;
-    
-    .commision-form {
-      padding: 20px;
-    }
-    
-    .heading {
-      font-size: 16px;
-      padding: 10px 20px;
-    }
-  }
-
-  /* Mobile styles */
-  @media (max-width: 768px) {
-    width: 100%;
-    max-width: 100%;
-    
-    .commision-form {
-      padding: 15px;
-    }
-    
-    .heading {
-      font-size: 14px;
-      padding: 8px 15px;
-    }
-    
-    .button-container {
-      margin-top: 20px;
-    }
-  }
-`;
 

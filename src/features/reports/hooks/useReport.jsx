@@ -1,7 +1,7 @@
 import { ButtonComponent } from "@components/index";
 import { message } from "antd";
 import moment from "moment";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { downloadReportApi, getReportListingApi } from "../services/report.api";
 import { updateUserStatusApi } from "@features/userManagement/services/userManagement.api";
@@ -19,35 +19,79 @@ const useReport = () => {
   const [openModal, setOpenModal] = useState(false);
   const [userInfoId, setuserInfoId] = useState();
   const navigate = useNavigate();
+  const hasMounted = useRef(false);
+  const prevFromDateRef = useRef(fromDate);
+  const prevEndDateRef = useRef(endDate);
 
   const getReports = useCallback(
     async (page) => {
       setLoading(true);
+      try {
       const params = new URLSearchParams();
       const pageToUse = page !== undefined ? page : currentPage;
       params.append("page", pageToUse);
       params.append("limit", pageLimit);
+      
+      // Only add date filters if both dates are provided
       if (fromDate && endDate) {
-        params.append("from", fromDate);
-        params.append("to", endDate);
+        // Backend uses $gt (greater than) and $lt (less than) which EXCLUDE the boundary dates
+        // $gt: createdAt > startDay (excludes startDay)
+        // $lt: createdAt < endOfDay (excludes endOfDay)
+        // To include the selected dates:
+        // - For start date: subtract 1 day so $gt includes the selected start date
+        // - For end date: add 1 day so $lt includes the selected end date
+        const startDateMinusOne = moment(fromDate, "YYYY-MM-DD").subtract(1, 'day').format("YYYY-MM-DD");
+        const endDatePlusOne = moment(endDate, "YYYY-MM-DD").add(1, 'day').format("YYYY-MM-DD");
+        params.append("from", startDateMinusOne);
+        params.append("to", endDatePlusOne);
       }
 
-      const res = await getReportListingApi(params.toString());
+        const res = await getReportListingApi(params);
 
-      if (res?.status === 200) {
-        const { data = [], count = 0 } = res;
-        setReportListing(data);
-        setTotalPage(count);
-      } else {
-        message.error(res?.message || "Something went wrong");
+        // Backend returns: { status: 200, message: "...", data: [...], count: ... }
+        if (res?.status === 200) {
+          const responseData = res?.data || [];
+          const responseCount = res?.count || 0;
+          
+          setReportListing(Array.isArray(responseData) ? responseData : []);
+          setTotalPage(Number(responseCount) || 0);
+          
+          // Debug log (remove in production)
+          if (process.env.NODE_ENV === 'development') {
+            console.log('Reports fetched:', {
+              count: responseCount,
+              dataLength: responseData.length,
+              page: pageToUse,
+              fromDate,
+              endDate
+            });
+          }
+        } else {
+          const errorMsg = res?.message || res?.data?.message || "Something went wrong";
+          message.error(errorMsg);
+          setReportListing([]);
+          setTotalPage(0);
+          
+          // Debug log (remove in production)
+          if (process.env.NODE_ENV === 'development') {
+            console.error('Error fetching reports:', res);
+          }
+        }
+      } catch (error) {
+        console.error("Error fetching reports:", error);
+        message.error("Failed to fetch reports. Please try again.");
+        setReportListing([]);
+        setTotalPage(0);
+      } finally {
+        setLoading(false);
       }
-      setLoading(false);
     },
     [currentPage, endDate, fromDate]
   );
 
   const handleDateChange = (e, type = "") => {
-    const val = e === "Invalid Date" ? "" : e;
+    // DateSelector returns date in "YYYY-MM-DD" format or empty string
+    const val = e === "Invalid Date" || !e ? "" : e;
     if (type === "from") {
       setFromDate(val);
     } else {
@@ -62,17 +106,39 @@ const useReport = () => {
 
   // Load data on initial mount
   useEffect(() => {
-    getReports(1);
+    if (!hasMounted.current) {
+      hasMounted.current = true;
+      getReports(1);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Reload data when dates change
+  // Reload data when dates change (skip initial mount and unchanged dates)
   useEffect(() => {
+    // Skip on initial mount
+    if (!hasMounted.current) {
+      prevFromDateRef.current = fromDate;
+      prevEndDateRef.current = endDate;
+      return;
+    }
+    
+    // Check if dates actually changed
+    const datesChanged = prevFromDateRef.current !== fromDate || prevEndDateRef.current !== endDate;
+    if (!datesChanged) {
+      return;
+    }
+    
+    // Update refs
+    prevFromDateRef.current = fromDate;
+    prevEndDateRef.current = endDate;
+    
+    // Dates changed after initial mount
     if (fromDate && endDate) {
+      // Both dates provided - fetch with date filter
       setCurrentPage(1);
       getReports(1);
     } else if (!fromDate && !endDate) {
-      // If dates are cleared, reload without filters
+      // Dates cleared - fetch without filters
       setCurrentPage(1);
       getReports(1);
     }

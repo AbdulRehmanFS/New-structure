@@ -1,8 +1,6 @@
 /* eslint-disable react/prop-types */
 import { memo } from "react";
-import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import { theme } from "@utils/theme";
 
 const TableHeaderWrapper = ({
   heading,
@@ -16,11 +14,11 @@ const TableHeaderWrapper = ({
   const navigateSection = () => link !== "" && navigate(link, { state });
 
   return (
-    <TableHeadingWrapper className="table-wrapper">
-      <div className="header-cover">
-        <div className="heading">{heading}</div>
+    <div className="bg-[rgb(38,38,38)] mt-5 rounded-xl border border-grey-border overflow-x-auto md:mt-5 md:rounded-xl sm:mt-[15px] sm:rounded-lg">
+      <div className="flex justify-between py-2.5 px-5 bg-table-header rounded-t-xl border-b border-light-white flex-wrap gap-2.5 md:py-2.5 md:px-5 sm:py-2 sm:px-3 sm:rounded-t-lg">
+        <div className="text-light-white text-base md:text-base sm:text-sm">{heading}</div>
         {viewAll && dataLength ? (
-          <div className="view-all-link" onClick={navigateSection} aria-hidden>
+          <div className="text-primary-light underline underline-offset-[3px] cursor-pointer whitespace-nowrap hover:text-primary-light" onClick={navigateSection} aria-hidden>
             View all
           </div>
         ) : (
@@ -28,53 +26,8 @@ const TableHeaderWrapper = ({
         )}
       </div>
       {children}
-    </TableHeadingWrapper>
+    </div>
   );
 };
 export default memo(TableHeaderWrapper);
-
-const TableHeadingWrapper = styled.div`
-  background: rgb(38 38 38);
-  margin-top: 20px;
-  border-radius: 12px;
-  border: 1px solid ${theme.greyBorder};
-  overflow-x: auto;
-
-  .header-cover {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 20px;
-    background: ${theme.tableHeader};
-    border-radius: 12px 12px 0 0;
-    border-bottom: 1px solid ${theme.lightWhite};
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-  .heading {
-    color: ${theme.lightWhite};
-    font-size: 16px;
-  }
-  .view-all-link {
-    text-decoration: underline;
-    color: ${theme.lightPrimaryColor} !important;
-    cursor: pointer;
-    text-underline-offset: 3px;
-    white-space: nowrap;
-  }
-
-  /* Mobile styles */
-  @media (max-width: 768px) {
-    margin-top: 15px;
-    border-radius: 8px;
-
-    .header-cover {
-      padding: 8px 12px;
-      border-radius: 8px 8px 0 0;
-    }
-
-    .heading {
-      font-size: 14px;
-    }
-  }
-`;
 

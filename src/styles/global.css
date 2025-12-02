@@ -54,33 +54,6 @@ body {
   color: #949494 !important;
 }
 
-/* View all link styling - ensure red color, not blue */
-.view-all-link {
-  color: rgba(216, 12, 12, 1) !important;
-}
-
-.view-all-link:hover {
-  color: rgba(216, 12, 12, 1) !important;
-}
-
-/* Notifications page styles */
-.heading p {
-  color: white;
-}
-
-.notification-check {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 5px 0px;
-}
-
-.line {
-  height: 1px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  margin: 14px 0;
-}
-
 /* Create Push Notification page styles */
 .notification-type-radio-group .ant-radio-wrapper {
   display: flex;
@@ -100,40 +73,6 @@ body {
 .notification-type-radio-group .ant-radio-wrapper span:last-child {
   text-align: left;
   flex: 1;
-}
-
-.push-notification-textarea::placeholder {
-  color: rgba(196, 196, 196, 0.45);
-}
-
-.push-notification-form .label {
-  color: rgba(255, 255, 255, 0.79);
-  font-size: 14px;
-  font-weight: 500;
-}
-
-.push-notification-form .custom-button {
-  margin-top: 2%;
-}
-
-.email-notification-form .email-notification-textarea::placeholder,
-.email-notification-form .input-field::placeholder {
-  color: rgba(196, 196, 196, 0.45);
-}
-
-.email-notification-form .input-field {
-  background: white;
-  color: rgba(116, 116, 116, 1);
-}
-
-.email-notification-form .label {
-  color: rgba(255, 255, 255, 0.79);
-  font-size: 14px;
-  font-weight: 500;
-}
-
-.email-notification-form .custom-button {
-  margin-top: 2%;
 }
 
 #root {

@@ -7,7 +7,6 @@ import ButtonComponent from "@components/Button";
 import ModalComponent from "@features/common/components/Modal";
 import { useState } from "react";
 import { theme } from "@utils/theme";
-import styled from "styled-components";
 import { deleteCreatorUserApi, updateUserStatusApi } from "@features/userManagement/services/userManagement.api";
 import { errorMessage } from "@utils/commonSection";
 import { useNavigate } from "react-router-dom";
@@ -82,8 +81,8 @@ export default function ReportModal({
         </ModalComponent>
       )}
       <Modal open={isModalOpen} onCancel={handleCancel} footer={false} width="auto" centered style={{ maxWidth: "90vw" }}>
-        <ModalWrapper>
-          <div className="title">Please select from one of the reasons below.</div>
+        <div className="p-2.5 max-w-[520px] w-full md:p-[15px] sm:p-2.5 sm:p-2.5 [480px]:p-2">
+          <div className="text-primary text-lg font-semibold md:text-lg sm:text-base [480px]:text-sm">Please select from one of the reasons below.</div>
           <Checkbox.Group
             style={{
               width: "100%"
@@ -91,7 +90,7 @@ export default function ReportModal({
             value={selectedValue}
             onChange={onChange}>
             {issuesArray?.map((e, index) => (
-              <div key={index} className="checkbox">
+              <div key={index} className="py-[5px] px-5 w-full sm:py-[5px] sm:px-2.5">
                 <Checkbox key={index} value={e.value}>
                   <p style={{ color: theme.black }}> {e.label}</p>
                 </Checkbox>
@@ -106,7 +105,7 @@ export default function ReportModal({
               rowColumn={5}
               onChange={(e) => setOtherReason(e.target.value)}
             />
-            <div className="buttons">
+            <div className="flex flex-col pt-5 gap-2.5 sm:flex-col">
               <ButtonComponent
                 text={`${deletemodal ? "Delete User" : "Disable User"}`}
                 onClick={() => deactiveUser()}
@@ -124,66 +123,10 @@ export default function ReportModal({
               />
             </div>
           </Checkbox.Group>
-        </ModalWrapper>
+        </div>
       </Modal>
     </div>
   );
 }
 
-export const ModalWrapper = styled.div`
-  padding: 10px;
-  max-width: 520px;
-  width: 100%;
-  
-  .title {
-    color: ${theme.primaryColor};
-    font-size: 18px;
-    font-weight: 600;
-  }
-  .checkbox {
-    padding: 5px 20px;
-    width: 100%;
-  }
-  .buttons {
-    display: flex;
-    flex-direction: column;
-    padding-top: 20px;
-    gap: 10px;
-  }
-
-  /* Tablet styles */
-  @media (max-width: 1024px) {
-    padding: 15px;
-    
-    .title {
-      font-size: 18px;
-    }
-  }
-
-  /* Mobile styles */
-  @media (max-width: 768px) {
-    padding: 10px;
-    
-    .title {
-      font-size: 16px;
-    }
-    
-    .checkbox {
-      padding: 5px 10px;
-    }
-    
-    .buttons {
-      flex-direction: column;
-    }
-  }
-
-  /* Small mobile styles */
-  @media (max-width: 480px) {
-    padding: 8px;
-    
-    .title {
-      font-size: 14px;
-    }
-  }
-`;
 

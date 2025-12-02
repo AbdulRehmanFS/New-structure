@@ -14,9 +14,9 @@ const SignInForm = () => {
       layout="vertical"
       onFinish={onFinish}
       autoComplete="off"
-      className="border border-grey-border bg-white rounded-xl [&_.heading]:text-primary-light [&_.heading]:text-[26px] [&_.heading]:underline [&_.heading]:underline-offset-[6px] [&_.heading]:flex [&_.heading]:justify-center [&_.heading]:mb-4 [&_.heading]:font-semibold [&_.forgot-password]:text-dark-grey-text [&_.forgot-password]:leading-[20.4px] [&_.forgot-password]:underline [&_.forgot-password]:text-center [&_.forgot-password]:cursor-pointer [&_.custom-button]:mt-4 [&_.custom-button]:h-[45px] [&_.mid-password-section]:flex [&_.mid-password-section]:justify-end [&_.mid-password-section]:my-2 [&_.mid-password-section]:text-xs [&_.ant-input]:!text-black"
+      className="border border-grey-border bg-white rounded-xl [&_.custom-button]:mt-4 [&_.custom-button]:h-[45px] [&_.ant-input]:!text-black"
     >
-      <div className="heading">Sign in</div>
+      <div className="text-primary-light text-[26px] underline underline-offset-[6px] flex justify-center mb-4 font-semibold">Sign in</div>
       <Form.Item
         name="email"
         rules={[
@@ -55,8 +55,8 @@ const SignInForm = () => {
           }}
         />
       </Form.Item>
-      <div className="mid-password-section">
-        <div className="forgot-password" onClick={handleNavigation} aria-hidden>
+      <div className="flex justify-end my-2 text-xs">
+        <div className="text-dark-grey-text leading-[20.4px] underline text-center cursor-pointer" onClick={handleNavigation} aria-hidden>
           Forgot Password?
         </div>
       </div>

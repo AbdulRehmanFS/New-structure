@@ -13,7 +13,7 @@ const PushNotificationForm = ({ type }) => {
   return (
     <Form
       name="basic"
-      className="push-notification-form"
+      className="w-full [&_.label]:text-light-white [&_.label]:text-sm [&_.label]:font-medium [&_.push-notification-textarea::placeholder]:text-[rgba(196,196,196,0.45)] [&_.custom-button]:mt-[2%]"
       style={{ width: "100%" }}
       initialValues={{}}
       layout="vertical"
@@ -45,7 +45,7 @@ const PushNotificationForm = ({ type }) => {
         ]}
       >
         <InputComponent
-          className="push-notification-textarea mb-5"
+          className="push-notification-textarea mb-5 [&::placeholder]:text-[rgba(196,196,196,0.45)]"
           rowColumn={5}
           placeholder="Message Body"
           bg="rgba(196, 196, 196, 0)"

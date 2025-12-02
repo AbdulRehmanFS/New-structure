@@ -58,11 +58,11 @@ export default function ViewerProfile() {
       <Header showSearch={false} heading="User Management" />
       <ViewProfileWrapper className="scroll-without-header">
         <HeaderSection className="top-section">
-          <div className="heading">
+          <div className="flex gap-[5px]">
             <BackButton />
             Viewer Profile
           </div>
-          <div className="button-component">
+          <div className="flex gap-2.5">
             <ButtonComponent
               text={viewerProfile?.status === "inactive" ? "Reactivate User" : "De-Activate User"}
               width="135px"
@@ -141,15 +141,7 @@ export default function ViewerProfile() {
 }
 
 const ViewProfileWrapper = styled(OuterWrapper)`
-  .button-component {
-    display: flex;
-    gap: 10px;
-  }
   .profile-wrapper {
     margin: 20px 0;
-  }
-  .heading {
-    display: flex;
-    gap: 5px;
   }
 `;

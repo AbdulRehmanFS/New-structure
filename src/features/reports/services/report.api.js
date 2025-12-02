@@ -7,8 +7,22 @@ const route = {
 };
 
 export const getReportListingApi = (payload) => {
-  const queryString = payload instanceof URLSearchParams ? payload.toString() : payload;
-  return getApi(route.report_listing + "?" + queryString);
+  // If payload is a URLSearchParams or string, extract query params
+  let queryParams = {};
+  if (payload instanceof URLSearchParams) {
+    payload.forEach((value, key) => {
+      queryParams[key] = value;
+    });
+  } else if (typeof payload === 'string') {
+    // Parse query string if it's a string
+    const params = new URLSearchParams(payload);
+    params.forEach((value, key) => {
+      queryParams[key] = value;
+    });
+  } else {
+    queryParams = payload || {};
+  }
+  return getApi(route.report_listing, queryParams);
 };
 
 export const getReportCommentListApi = (payload) => {

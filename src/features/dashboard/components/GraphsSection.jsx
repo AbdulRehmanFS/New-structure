@@ -29,11 +29,11 @@ const GraphsSection = () => {
   };
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "34px", marginTop: "30px" }}>
-      <div className="podcast-graph-wrapper">
-        <div className="podcast-graph-header">
-          <div className="heading">Content Stats</div>
-          <div className="right-section light-txt">
+    <div className="flex flex-col gap-[34px] mt-[30px]">
+      <div className="h-[330px] pr-5 pl-0 -ml-5">
+        <div className="flex items-center justify-between px-5 font-semibold flex-wrap">
+          <div>Content Stats</div>
+          <div className="flex gap-8 items-center text-white">
             Total Uploads {overallContentStats?.totalUploads}
             <Select
               size="middle"
@@ -59,12 +59,12 @@ const GraphsSection = () => {
 
       <HorizontalLine margin="-10px 0 0 0" />
 
-      <div className="podcast-graph-wrapper">
-        <div className="podcast-graph-header">
-          <div className="heading">User Growth</div>
+      <div className="h-[330px] pr-5 pl-0 -ml-5">
+        <div className="flex items-center justify-between px-5 font-semibold flex-wrap">
+          <div>User Growth</div>
           <LegendChartColor createrViewer={createrViewer} />
 
-          <div className="right-section">
+          <div className="flex gap-8 items-center">
             <SelectComponent
               onChange={(e) => setCreaterViewer(e)}
               size="middle"
@@ -103,10 +103,10 @@ const GraphsSection = () => {
 
       <HorizontalLine margin="-10px 0 0 0" />
 
-      <div className="podcast-graph-wrapper">
-        <div className="podcast-graph-header">
-          <div className="heading">Financial Stats</div>
-          <div className="right-section light-txt">
+      <div className="h-[330px] pr-5 pl-0 -ml-5">
+        <div className="flex items-center justify-between px-5 font-semibold flex-wrap">
+          <div>Financial Stats</div>
+          <div className="flex gap-8 items-center text-white">
             Overall Earning: ${podcastStats.overview.totalEarnings.toLocaleString()}
             <Select
               size="middle"

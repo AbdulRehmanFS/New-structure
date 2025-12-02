@@ -13,16 +13,16 @@ const Notifications = () => {
     <>
       <Header showSearch={false} heading="Notifications" />
       <div className="scroll-without-header">
-        <div className="heading">
+        <div>
           <p className="text-white">
             {notification === 1 ? "Push Notification" : "Automated Notification"}
           </p>
         </div>
-        <div className="line" />
-        <div className="notification-check">
+        <div className="h-px border-t border-white/10 my-[14px]" />
+        <div className="flex justify-between items-center py-[5px]">
           <NotificationRadio onChange={handleRadioCheck} value={notification} />
         </div>
-        <div className="line" />
+        <div className="h-px border-t border-white/10 my-[14px]" />
         {notification === 1 ? (
           <PushNotificationListing type={notification} />
         ) : (
