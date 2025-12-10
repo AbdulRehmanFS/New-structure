@@ -18,4 +18,3 @@ const ContentSlice = createSlice({
 
 export const { setUploadContent, clearUploadContent } = ContentSlice.actions;
 export default ContentSlice.reducer;
-

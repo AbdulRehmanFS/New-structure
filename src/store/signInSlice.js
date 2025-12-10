@@ -19,4 +19,3 @@ const Authentication = createSlice({
 });
 export const { authlogin, authlogout } = Authentication.actions;
 export default Authentication.reducer;
-

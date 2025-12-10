@@ -1,10 +1,10 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import Authentication from "./signInSlice";
-import sidebarSlice from "./sidebarSlice";
-import UserSlice from "./useManagementSlice";
-import ContentSlice from "./contentSlice";
+import Authentication from "store/signInSlice";
+import sidebarSlice from "store/sidebarSlice";
+import UserSlice from "store/useManagementSlice";
+import ContentSlice from "store/contentSlice";
 
 const reducers = combineReducers({
   signIn: Authentication,
@@ -25,4 +25,3 @@ const reduxstore = configureStore({
 
 export default reduxstore;
 export const persistor = persistStore(reduxstore);
-

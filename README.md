@@ -1,16 +1,58 @@
-# React + Vite
+# Frontend Repository Setup
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Local Development
 
-Currently, two official plugins are available:
+### Prerequisites
+- Node.js installed on your system
+- npm package manager
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Setup Instructions
 
-## React Compiler
+1. **Install Dependencies**
+   ```bash
+   npm install
+   ```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+2. **Environment Configuration**
+   
+   Create a `.env` file in the root directory with the following environment variable:
+   ```bash
+   REACT_APP_API_URL=http://localhost:5001
+   ```
 
-## Expanding the ESLint configuration
+3. **Start Development Server**
+   ```bash
+   npm start
+   ```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+The application will be available at `http://localhost:3000` (or the next available port).
+
+## Deployment
+
+The application is deployed on AWS Amplify with the following environments:
+
+- **Development**: https://admin-dev.livekanvas.com
+- **Production**: https://admin.livekanvas.com
+
+## Environment Variables
+
+| Variable | Local Development | Purpose |
+|----------|-------------------|---------|
+| `REACT_APP_API_URL` | `http://localhost:5001` | Backend API endpoint |
+
+## Quick Start
+
+```bash
+# Clone the repository
+git clone <repository-url>
+cd <repository-name>
+
+# Install dependencies
+npm install
+
+# Create environment file
+echo "REACT_APP_API_URL=http://localhost:5001" > .env
+
+# Start development server
+npm start
+```

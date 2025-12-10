@@ -16,6 +16,7 @@ const UserSlice = createSlice({
       state.userSelectedList = action.payload ?? "viewer";
     },
     setFaqTabSelection: (state, action) => {
+      
       state.faqTab = action.payload;
     },
     setAudioVideoTabSelection: (state, action) => {
@@ -40,4 +41,3 @@ export const {
   setEarningTabSelection,
 } = UserSlice.actions;
 export default UserSlice.reducer;
-
